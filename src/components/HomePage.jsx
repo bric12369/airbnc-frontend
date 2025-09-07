@@ -1,12 +1,12 @@
 import PropertyList from "./PropertyList"
 
 
-const HomePage = () => {
+const HomePage = ({ properties, setProperties }) => {
 
     return (
         <div id='homePage'>
             <h2>Homepage</h2>
-            <PropertyList />
+            <PropertyList properties={properties} setProperties={setProperties}/>
         </div>
     )
 }

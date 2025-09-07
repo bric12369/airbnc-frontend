@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import fetchProperties from '../apiCalls'
+import PropertyCard from './PropertyCard'
 
 const PropertyList = ({ properties, setProperties }) => {
 
@@ -11,9 +12,8 @@ const PropertyList = ({ properties, setProperties }) => {
 
     return (
         <div id='propertyList'>
-            <p>PropertyList</p>
             {properties.map((property) => {
-                return <p key={property.property_id}>{property.property_name}</p>
+                return <PropertyCard property={property} key={property.property_id} />
             })}
         </div>
     )

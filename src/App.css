@@ -32,3 +32,11 @@ h1 {
 #propertyList {
   border: 2px solid red;
 }
+
+#propertyCard {
+  border: 2px solid green;
+}
+
+#propertyCardImage {
+  height: 7rem;
+}

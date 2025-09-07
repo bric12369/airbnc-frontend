@@ -1,6 +1,25 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem;
   text-align: center;
+}
+
+body {
+  display: block;
+}
+
+#header {
+  align-items: center;
+  display: flex;
+  border-bottom: solid 2px black;
+}
+
+h1 {
+  font-size: 3.2rem;
+}
+
+.header-icon {
+  height: 3.2rem;
+  padding: 0 1.25rem;
 }

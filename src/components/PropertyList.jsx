@@ -1,14 +1,12 @@
 import { useEffect } from 'react'
-import axios from "axios"
+import fetchProperties from '../apiCalls'
 
 const PropertyList = ({ properties, setProperties }) => {
 
     useEffect(() => {
-        const fetchProperties = async () => {
-                const response = await axios.get('https://airbnc-icdq.onrender.com/api/properties')
-                setProperties(response.data.properties)
-        }
-        fetchProperties()
+        fetchProperties().then((response) => {
+            setProperties(response.data.properties)
+        })
     }, [])
 
     return (

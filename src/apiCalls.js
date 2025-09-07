@@ -5,8 +5,8 @@ const apiClient = axios.create({
     timeout: 2000
 })
 
-export default function fetchProperties() {
-    return apiClient.get('/api/properties').then((response) => {
+export default function fetchProperties(filter) {
+    return apiClient.get(!filter ? '/api/properties' : `/api/properties?${filter}`).then((response) => {
         return response
     })
 }

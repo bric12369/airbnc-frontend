@@ -23,3 +23,12 @@ h1 {
   height: 3.2rem;
   padding: 0 1.25rem;
 }
+
+#homePage {
+  margin: 1rem 0;
+  border: 2px solid blue;
+}
+
+#propertyList {
+  border: 2px solid red;
+}

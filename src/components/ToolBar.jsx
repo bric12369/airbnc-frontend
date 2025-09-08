@@ -20,6 +20,11 @@ const ToolBar = ({ setFilters }) => {
         setFilters(formInputs)
     }
 
+    const handleResetFilters = (e) => {
+        e.preventDefault()
+        setFilters({})
+    }
+
     return (
         <div id='toolBar'>
             <h3>Filters:</h3>
@@ -46,6 +51,7 @@ const ToolBar = ({ setFilters }) => {
                     <input type="number" name='min_price' onChange={handleSelect} />
                 </label>
                 <button>Submit</button>
+                <button type='reset' onClick={handleResetFilters}>Reset filters</button>
             </form>
         </div>
     )

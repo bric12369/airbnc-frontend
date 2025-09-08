@@ -8,14 +8,18 @@ const PropertyList = ({ properties, setProperties }) => {
     const [filters, setFilters] = useState({})
 
     useEffect(() => {
-        fetchProperties().then((response) => {
+        const chosenFilters = []
+        for (const filter in filters) {
+            chosenFilters.push(`${filter}=${filters[filter]}`)
+        }
+        fetchProperties(chosenFilters.join('&')).then((response) => {
             setProperties(response.data.properties)
         })
-    }, [])
+    }, [filters])
 
     return (
         <div id='propertyList'>
-            <ToolBar filters={filters} setFilters={setFilters}/>
+            <ToolBar setFilters={setFilters}/>
             {properties.map((property) => {
                 return <PropertyCard property={property} key={property.property_id} />
             })}

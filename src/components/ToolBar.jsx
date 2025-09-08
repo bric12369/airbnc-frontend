@@ -6,6 +6,8 @@ const ToolBar = ({ setFilters }) => {
 
     const [formInputs, setFormInputs] = useState({})
 
+    const [isOpen, setIsOpen] = useState(false)
+
     const handleSelect = (e) => {
         const select = e.target.name
         const choice = e.target.value
@@ -25,7 +27,14 @@ const ToolBar = ({ setFilters }) => {
         setFilters({})
     }
 
+    const handleOpenFilters = (e) => {
+        isOpen === false ? setIsOpen(true) : setIsOpen(false)
+    }
+
     return (
+        <>
+        {<button onClick={handleOpenFilters}>{isOpen === false ? 'Filters' : 'Hide Filters'}</button>}
+        {isOpen &&
         <div id='toolBar'>
             <h3>Filters:</h3>
             <form onSubmit={handleSubmit}>
@@ -53,7 +62,8 @@ const ToolBar = ({ setFilters }) => {
                 <button>Submit</button>
                 <button type='reset' onClick={handleResetFilters}>Reset filters</button>
             </form>
-        </div>
+        </div>}
+        </>
     )
 }
 

@@ -36,7 +36,6 @@ const ToolBar = ({ setFilters }) => {
         {<button onClick={handleOpenFilters}>{isOpen === false ? 'Filters' : 'Hide Filters'}</button>}
         {isOpen &&
         <div id='toolBar'>
-            <h3>Filters:</h3>
             <form onSubmit={handleSubmit}>
                 <label>Sort by:
                     <select name="sort" id="id" onChange={handleSelect}>

@@ -1,11 +1,11 @@
 import { useState } from "react"
-import fetchProperties from "../utils/apiCalls"
+import { propertyTypes } from '../utils/filterOptions'
 
 
 const ToolBar = ({ setFilters }) => {
 
     const [formInputs, setFormInputs] = useState({})
-    
+
     const handleSelect = (e) => {
         const select = e.target.name
         const choice = e.target.value
@@ -14,7 +14,7 @@ const ToolBar = ({ setFilters }) => {
             [select]: choice
         }));
     }
-    
+
     const handleSubmit = (e) => {
         e.preventDefault()
         setFilters(formInputs)
@@ -34,16 +34,9 @@ const ToolBar = ({ setFilters }) => {
                 <label>Property type:
                     <select name="property_type" id="property_type" defaultValue='' onChange={handleSelect} >
                         <option value='' disabled>Select an option</option>
-                        <option value="Apartment">Apartment</option>
-                        <option value="Cabin">Cabin</option>
-                        <option value="Castle">Castle</option>
-                        <option value="Chalet">Chalet</option>
-                        <option value="Cottage">Cottage</option>
-                        <option value="House">House</option>
-                        <option value="Loft">Loft</option>
-                        <option value="Mansion">Mansion</option>
-                        <option value="Studio">Studio</option>
-                        <option value="Villa">Villa</option>
+                        {propertyTypes.map((type) => {
+                            return <option key={type} value={type}>{type}</option>
+                        })}
                     </select>
                 </label>
                 <label>Max price:

@@ -1,5 +1,5 @@
 import { useState } from "react"
-import fetchProperties from "../apiCalls"
+import fetchProperties from "../utils/apiCalls"
 
 
 const ToolBar = ({ setFilters }) => {

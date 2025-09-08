@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import fetchProperties from '../apiCalls'
+import fetchProperties from '../utils/apiCalls'
 import PropertyCard from './PropertyCard'
 import ToolBar from './ToolBar'
 

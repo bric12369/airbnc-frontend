@@ -21,7 +21,7 @@ const PropertyList = ({ properties, setProperties }) => {
         <div id='propertyList'>
             <ToolBar setFilters={setFilters}/>
             {properties.map((property) => {
-                return <PropertyCard property={property} key={property.property_id} />
+                return <PropertyCard property={property} key={property.property_id} showFavouriteButton={true} />
             })}
         </div>
     )

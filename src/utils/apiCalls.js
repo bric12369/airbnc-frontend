@@ -30,3 +30,9 @@ export function postFavourite(propertyId, guestId) {
         return response
     })
 }
+
+export function postBooking(propertyId, newBooking) {
+    return apiClient.post(`/api/properties/${propertyId}/bookings`, newBooking).then((response) => {
+        return response
+    })
+}

@@ -12,6 +12,17 @@ export function fetchProperties(filters) {
     })
 }
 
+export function fetchPropertyById(id) {
+    try {
+        return apiClient.get(`/api/properties/${id}`).then((response) => {
+            return response
+        })
+        
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export function postFavourite(propertyId, guestId) {
     return apiClient.post(`/api/properties/${propertyId}/favourite`, {
         'guest_id': guestId

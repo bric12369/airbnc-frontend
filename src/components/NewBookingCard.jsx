@@ -1,8 +1,9 @@
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { postBooking } from '../utils/apiCalls';
+import UserContext from '../Contexts/UserContext';
 
 
 const NewBookingCard = () => {
@@ -10,13 +11,15 @@ const NewBookingCard = () => {
 
     const { id } = useParams()
 
+    const user = useContext(UserContext)
+
     useEffect(() => {
     },[newBooking])
 
     const handleChange = (range) => {
         const [start, end] = range
         setNewBooking({
-            'guest_id': 1,
+            'guest_id': user === undefined ? 1 : user,
             'check_in_date': start.toISOString().split('T')[0],
             'check_out_date': end.toISOString().split('T')[0]
         })
@@ -24,6 +27,7 @@ const NewBookingCard = () => {
 
     const handleSubmitBooking = (e) => {
         e.preventDefault()
+        console.log(newBooking)
         postBooking(id, newBooking).then((response) => {
             alert(response.data.msg)
         })

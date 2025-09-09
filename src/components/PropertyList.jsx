@@ -1,11 +1,14 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { fetchProperties } from '../utils/apiCalls'
 import PropertyCard from './PropertyCard'
 import ToolBar from './ToolBar'
+import UserContext from '../Contexts/UserContext'
 
 const PropertyList = ({ properties, setProperties }) => {
 
     const [filters, setFilters] = useState({})
+
+    const user = useContext(UserContext)
 
     useEffect(() => {
         fetchProperties(filters).then((response) => {

@@ -8,9 +8,10 @@ import UserContext from './Contexts/UserContext'
 
 function App() {
   const [properties, setProperties] = useState([])
+  const [userSignedIn, setUserSignedIn] = useState()
 
   return (
-    <UserContext>
+    <UserContext value={userSignedIn}>
       <>
         <Header />
         <BrowserRouter>

@@ -1,11 +1,16 @@
+import { useContext } from 'react'
 import { postFavourite } from '../utils/apiCalls'
+import UserContext from '../Contexts/UserContext'
 
 
 const PropertyCard = ({ property, showFavouriteButton = false }) => {
 
+    const user = useContext(UserContext)
+
     const handleFavourite = (e) => {
         e.preventDefault()
-        postFavourite(property.property_id, 1).then((response) => {
+        const userId = user === undefined ? 1 : user
+        postFavourite(property.property_id, userId).then((response) => {
             alert(response.data.msg)
         })
     }

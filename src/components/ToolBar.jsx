@@ -36,6 +36,7 @@ const ToolBar = ({ setFilters }) => {
 
     const handleResetFilters = (e) => {
         e.preventDefault()
+        document.getElementById('filtersForm').reset()
         setFilters({})
     }
 
@@ -48,16 +49,16 @@ const ToolBar = ({ setFilters }) => {
             {<button onClick={handleOpenFilters}>{isOpen === false ? 'Filters' : 'Hide Filters'}</button>}
             {isOpen &&
                 <div id='toolBar'>
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit} id='filtersForm'>
                         <label>Sort by:
-                            <select name="sort" id="id" onChange={handleSelect}>
-                                <option value="">Recommended</option>
+                            <select name="sort" onChange={handleSelect} >
+                                <option value="" defaultValue>Recommended</option>
                                 <option value="price_per_night">Price high to low</option>
                                 <option value="price_per_night">Price low to high</option>
                             </select>
                         </label>
                         <label>Property type:
-                            <select name="property_type" id="property_type" defaultValue='' onChange={handleSelect} >
+                            <select name="property_type" onChange={handleSelect} defaultValue='' >
                                 <option value='' disabled>Select an option</option>
                                 {propertyTypes.map((type) => {
                                     return <option key={type} value={type}>{type}</option>

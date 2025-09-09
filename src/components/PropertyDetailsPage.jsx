@@ -30,7 +30,7 @@ const PropertyDetailsPage = () => {
                 })}
                 </div>
                 <p>{property.description}</p>
-                <img src={property.host_avatar} alt={`Photo of host: ${property.host}`} />
+                <img src={property.host_avatar} alt={`Photo of host: ${property.host}`} id='hostImage' />
                 <figcaption>{`Host: ${property.host}`}</figcaption>
             </div>
         )

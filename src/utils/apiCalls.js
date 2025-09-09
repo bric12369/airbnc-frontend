@@ -23,6 +23,12 @@ export function fetchPropertyById(id) {
     }
 }
 
+export function fetchPropertyBookings(id) {
+    return apiClient.get(`/api/properties/${id}/bookings`).then((response) => {
+        return response
+    })
+}
+
 export function postFavourite(propertyId, guestId) {
     return apiClient.post(`/api/properties/${propertyId}/favourite`, {
         'guest_id': guestId

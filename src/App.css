@@ -58,3 +58,21 @@ h1 {
 #hostImage {
   height: 10rem;
 }
+
+#calendar {
+  width: 15rem;
+}
+
+.react-calendar {
+  width: 13rem;
+}
+
+.react-calendar__tile, .react-calendar__navigation, .react-calendar__navigation__label {
+  background-color: rgb(48, 48, 189);
+  color: white;
+}
+
+.react-calendar__month-view__weekdays__weekday {
+  background-color: rgb(190, 45, 45);
+  color: white;
+}

@@ -1,6 +1,7 @@
 import { useParams } from "react-router"
 import { useState, useEffect } from "react"
 import { fetchPropertyById } from "../utils/apiCalls"
+import NewBookingCard from "./NewBookingCard"
 
 
 const PropertyDetailsPage = () => {
@@ -32,6 +33,7 @@ const PropertyDetailsPage = () => {
                 <p>{property.description}</p>
                 <img src={property.host_avatar} alt={`Photo of host: ${property.host}`} id='hostImage' />
                 <figcaption>{`Host: ${property.host}`}</figcaption>
+                <NewBookingCard />
             </div>
         )
     }

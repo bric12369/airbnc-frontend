@@ -1,12 +1,13 @@
 import axios from "axios"
 
 const apiClient = axios.create({
-    baseURL: 'https://airbnc-icdq.onrender.com',
-    // timeout: 2000
+    baseURL: 'https://airbnc-icdq.onrender.com'
 })
 
-export function fetchProperties(filter) {
-    return apiClient.get(!filter ? '/api/properties' : `/api/properties?${filter}`).then((response) => {
+export function fetchProperties(filters) {
+    return apiClient.get('/api/properties', {
+        params: filters
+    }).then((response) => {
         return response
     })
 }

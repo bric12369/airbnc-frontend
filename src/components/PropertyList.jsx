@@ -8,11 +8,7 @@ const PropertyList = ({ properties, setProperties }) => {
     const [filters, setFilters] = useState({})
 
     useEffect(() => {
-        const chosenFilters = []
-        for (const filter in filters) {
-            chosenFilters.push(`${filter}=${filters[filter]}`)
-        }
-        fetchProperties(chosenFilters.join('&')).then((response) => {
+        fetchProperties(filters).then((response) => {
             setProperties(response.data.properties)
         })
     }, [filters])

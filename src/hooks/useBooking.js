@@ -10,6 +10,7 @@ export default function useBooking() {
         const [newBooking, setNewBooking] = useState({})
         const [currBookings, setCurrBookings] = useState([])
         const [buttonDisabled, setButtonDisabled] = useState(true)
+        const [retriggerFetch, setRetriggerFetch] = useState(1)
     
         const { id } = useParams()
     
@@ -19,7 +20,7 @@ export default function useBooking() {
             fetchPropertyBookings(id).then((response) => {
                 setCurrBookings(response.data.bookings)
             })
-        }, [id])
+        }, [id, retriggerFetch])
     
         let bookedDates = useMemo(() => {
     
@@ -47,6 +48,7 @@ export default function useBooking() {
             e.preventDefault()
             postBooking(id, newBooking).then((response) => {
                 alert(response.data.msg)
+                setRetriggerFetch(retriggerFetch === 1 ? 0 : 1)
             })
             setButtonDisabled(true)
         }

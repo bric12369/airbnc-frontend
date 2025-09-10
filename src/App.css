@@ -58,3 +58,8 @@ h1 {
 #hostImage {
   height: 10rem;
 }
+
+#reviewSnapshotContainer {
+  border: black 2px solid;
+  border-radius: 10px;
+}

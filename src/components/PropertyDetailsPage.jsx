@@ -1,22 +1,10 @@
-import { useParams } from "react-router"
-import { useState, useEffect } from "react"
-import { fetchPropertyById } from "../utils/apiCalls"
 import NewBookingCard from "./NewBookingCard"
+import usePropertyDetails from "../hooks/usePropertyDetails"
 
 
 const PropertyDetailsPage = () => {
-    const [property, setProperty] = useState({})
-    const [isLoading, setIsLoading] = useState(false)
 
-    const { id } = useParams()
-
-    useEffect(() => {
-        setIsLoading(true)
-        fetchPropertyById(id).then((response) => {
-            setProperty(response.data.property)
-            setIsLoading(false)
-        })
-    }, [])
+    const { property, isLoading } = usePropertyDetails()
     
     if (isLoading || !property.images) {
         return <h3>Loading...</h3>

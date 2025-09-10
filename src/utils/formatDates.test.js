@@ -1,5 +1,5 @@
 import { describe, test, expect } from "vitest";
-import { getDateRange, convertDateISOtoString } from "./formatDateRange";
+import { getDateRange, convertDateISOtoString, formatDate } from "./formatDates";
 
 describe('convertDateISOToString', () => {
     test('converts an ISO formatted date to string format', () => {
@@ -33,5 +33,12 @@ describe('getDateRange', () => {
         const mid3Str = 'Thu Oct 23 2025'
         const endStr = 'Fri Oct 24 2025'
         expect(getDateRange(start, end)).toEqual([startStr, mid1Str, mid2Str, mid3Str, endStr])
+    })
+})
+
+describe('formatDate', () => {
+    test('formats date in yyyy-mm-dd format when given a date object', () => {
+        const date = new Date('Wed Apr 01 2026 00:00:00 GMT+0100 (British Summer Time)')
+        expect(formatDate(date)).toBe('2026-04-01')
     })
 })

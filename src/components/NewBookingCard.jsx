@@ -4,7 +4,7 @@ import { useContext, useEffect, useMemo, useState } from 'react';
 import { useParams } from 'react-router';
 import { fetchPropertyBookings, postBooking } from '../utils/apiCalls';
 import UserContext from '../Contexts/UserContext';
-import { getDateRange } from '../utils/formatDateRange';
+import { formatDate, getDateRange } from '../utils/formatDates';
 
 
 const NewBookingCard = () => {
@@ -34,10 +34,12 @@ const NewBookingCard = () => {
 
     const handleChange = (range) => {
         const [start, end] = range
+        console.log(start)
+
         setNewBooking({
             'guest_id': user === undefined ? 1 : user,
-            'check_in_date': start.toISOString().split('T')[0],
-            'check_out_date': end.toISOString().split('T')[0]
+            'check_in_date': formatDate(start),
+            'check_out_date': formatDate(end)
         })
     }
 

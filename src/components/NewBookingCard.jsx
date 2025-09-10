@@ -4,6 +4,7 @@ import { useContext, useEffect, useMemo, useState } from 'react';
 import { useParams } from 'react-router';
 import { fetchPropertyBookings, postBooking } from '../utils/apiCalls';
 import UserContext from '../Contexts/UserContext';
+import { getDateRange } from '../utils/formatDateRange';
 
 
 const NewBookingCard = () => {
@@ -25,12 +26,9 @@ const NewBookingCard = () => {
         const dates = []
 
         for (const booking of currBookings) {
-            const checkIn = new Date(booking.check_in_date)
-            const checkOut = new Date(booking.check_out_date)
-            dates.push(checkIn, checkOut)
+            dates.push(getDateRange(booking.check_in_date, booking.check_out_date))
         }
-
-        return dates
+        return dates.flat()
 
     }, [currBookings])
 
@@ -54,7 +52,7 @@ const NewBookingCard = () => {
         <div>
             <Calendar minDate={new Date()} selectRange={true} onChange={handleChange} tileDisabled={({date}) =>
                 bookedDates.some(bookedDate =>
-                    bookedDate.toDateString() === date.toDateString()
+                    bookedDate === date.toDateString()
                 )} />
             <button onClick={handleSubmitBooking}>Submit booking</button>
         </div>

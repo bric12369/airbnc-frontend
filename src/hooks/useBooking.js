@@ -9,6 +9,7 @@ export default function useBooking() {
 
         const [newBooking, setNewBooking] = useState({})
         const [currBookings, setCurrBookings] = useState([])
+        const [buttonDisabled, setButtonDisabled] = useState(true)
     
         const { id } = useParams()
     
@@ -33,7 +34,7 @@ export default function useBooking() {
     
         const handleChange = (range) => {
             const [start, end] = range
-            console.log(start)
+            if (start && end) setButtonDisabled(false)
     
             setNewBooking({
                 'guest_id': user === undefined ? 1 : user,
@@ -47,7 +48,8 @@ export default function useBooking() {
             postBooking(id, newBooking).then((response) => {
                 alert(response.data.msg)
             })
+            setButtonDisabled(true)
         }
 
-    return { bookedDates, handleChange, handleSubmitBooking }
+    return { bookedDates, handleChange, handleSubmitBooking, buttonDisabled }
 }

@@ -5,7 +5,7 @@ import useBooking from '../hooks/useBooking';
 
 const NewBookingCard = () => {
 
-    const { bookedDates, handleChange, handleSubmitBooking } = useBooking()
+    const { bookedDates, handleChange, handleSubmitBooking, buttonDisabled } = useBooking()
 
     return (
         <div>
@@ -13,7 +13,7 @@ const NewBookingCard = () => {
                 bookedDates.some(bookedDate =>
                     bookedDate === date.toDateString()
                 )} />
-            <button onClick={handleSubmitBooking}>Submit booking</button>
+            <button disabled={buttonDisabled} onClick={handleSubmitBooking}>Submit booking</button>
         </div>
     )
 }

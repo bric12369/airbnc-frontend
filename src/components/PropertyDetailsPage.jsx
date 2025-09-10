@@ -2,12 +2,20 @@ import NewBookingCard from "./NewBookingCard"
 import usePropertyDetails from "../hooks/usePropertyDetails"
 import ReviewSnapshotCard from "./ReviewSnapshotCard"
 import useReviews from "../hooks/useReviews"
+import PropertyAddReviewSection from "./PropertyAddReviewSection"
+import { useState } from "react"
 
 
 const PropertyDetailsPage = () => {
 
     const { property, isLoading } = usePropertyDetails()
     const { reviews } = useReviews()
+    const [showReviewSection, setShowReviewSection] = useState(false)
+
+    const handleClick = (e) => {
+        e.preventDefault()
+        setShowReviewSection(true)
+    }
     
     if (isLoading || !property.images || !reviews.reviews) {
         return <h3>Loading...</h3>
@@ -30,6 +38,7 @@ const PropertyDetailsPage = () => {
                 {reviews.reviews.map((review) => {
                     return <ReviewSnapshotCard key={review.review_id} review={review} />
                 })}
+                {showReviewSection === true ? <PropertyAddReviewSection /> : <button onClick={handleClick}>Add review</button>}
             </div>
         )
     }

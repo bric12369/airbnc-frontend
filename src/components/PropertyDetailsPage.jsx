@@ -1,24 +1,13 @@
 import NewBookingCard from "./NewBookingCard"
 import usePropertyDetails from "../hooks/usePropertyDetails"
 import ReviewSnapshotCard from "./ReviewSnapshotCard"
-import { useEffect, useState } from "react"
-import { fetchPropertyReviews } from "../utils/apiCalls"
-import { useParams } from "react-router"
+import useReviews from "../hooks/useReviews"
 
 
 const PropertyDetailsPage = () => {
 
     const { property, isLoading } = usePropertyDetails()
-
-    const { id } = useParams()
-
-    const [reviews, setReviews] = useState({})
-
-    useEffect(() => {
-        fetchPropertyReviews(id).then((response) => {
-            setReviews(response.data)
-        })
-    }, [])
+    const { reviews } = useReviews()
     
     if (isLoading || !property.images || !reviews.reviews) {
         return <h3>Loading...</h3>

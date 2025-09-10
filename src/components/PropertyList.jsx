@@ -1,17 +1,10 @@
-import { useEffect, useState } from 'react'
-import { fetchProperties } from '../utils/apiCalls'
+import useProperties from '../hooks/useProperties'
 import PropertyCard from './PropertyCard'
 import ToolBar from './ToolBar'
 
 const PropertyList = ({ properties, setProperties }) => {
 
-    const [filters, setFilters] = useState({})
-
-    useEffect(() => {
-        fetchProperties(filters).then((response) => {
-            setProperties(response.data.properties)
-        })
-    }, [filters])
+    const { setFilters } = useProperties(setProperties)
 
     return (
         <div id='propertyList'>

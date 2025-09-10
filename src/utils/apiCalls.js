@@ -48,3 +48,9 @@ export function postBooking(propertyId, newBooking) {
         return response
     })
 }
+
+export function postReview(propertyId, reviewBody) {
+    return apiClient.post(`/api/properties/${propertyId}/reviews`, reviewBody).then((response) => {
+        return response
+    })
+}

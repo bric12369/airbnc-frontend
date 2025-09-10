@@ -38,7 +38,7 @@ const PropertyDetailsPage = () => {
                 {reviews.reviews.map((review) => {
                     return <ReviewSnapshotCard key={review.review_id} review={review} />
                 })}
-                {showReviewSection === true ? <PropertyAddReviewSection /> : <button onClick={handleClick}>Add review</button>}
+                {showReviewSection === true ? <PropertyAddReviewSection setShowReviewSection={setShowReviewSection} /> : <button onClick={handleClick}>Add review</button>}
             </div>
         )
     }

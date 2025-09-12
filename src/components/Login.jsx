@@ -15,6 +15,7 @@ const Login = ({ users }) => {
     const handleClick = (e) => {
         e.preventDefault()
         setUserIdSignedIn(userId)
+        alert('Login successful')
     }
 
     return (

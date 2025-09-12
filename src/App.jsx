@@ -13,7 +13,7 @@ function App() {
   const [userSignedIn, setUserSignedIn] = useState()
 
   return (
-    <UserContext value={userSignedIn}>
+    <UserContext value={{userSignedIn, setUserSignedIn}}>
         <Header users={users}/>
         <BrowserRouter>
           <Routes>

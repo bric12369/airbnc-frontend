@@ -15,10 +15,10 @@ const Header = ({ users }) => {
         <>
             <div id='header'>
                 <Link to='/'>
-                    <img src="/home.png" alt="home-icon" className="header-icon" />
+                    <img src="/home.png" alt="home-icon" className="icon" />
                 </Link>
                 <h1>AirBnC</h1>
-                <img src="/avatar.png" alt="profile-icon" className="header-icon" onClick={handleClick} />
+                <img src="/avatar.png" alt="profile-icon" className="icon" onClick={handleClick} />
             </div>
             {profilePicClicked && <Login users={users} />}
         </>

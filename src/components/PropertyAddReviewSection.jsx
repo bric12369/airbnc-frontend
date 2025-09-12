@@ -1,12 +1,14 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { postReview } from "../utils/apiCalls"
 import { useParams } from "react-router"
 import AnimatedButton from "./AnimatedButton"
+import UserContext from "../Contexts/UserContext"
 
 const PropertyAddReviewSection = ({ setShowReviewSection }) => {
 
     const [reviewBody, setReviewBody] = useState({})
     const { id } = useParams()
+    const { userIdSignedIn } = useContext(UserContext)
 
     const handleCancel = (e) => {
         e.preventDefault()
@@ -17,7 +19,7 @@ const PropertyAddReviewSection = ({ setShowReviewSection }) => {
         setReviewBody((prevInputs) => {
             return {
                 ...prevInputs,
-                "guest_id": 1,
+                "guest_id": userIdSignedIn,
                 [e.target.name]: e.target.value
             }
         })
@@ -25,9 +27,13 @@ const PropertyAddReviewSection = ({ setShowReviewSection }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        postReview(id, reviewBody).then((response) => {
-            response.status === 201 ? alert('Review posted') : null
-        })
+        if (userIdSignedIn === undefined) {
+            alert('Please login to add a review')
+        } else {
+            postReview(id, reviewBody).then((response) => {
+                response.status === 201 ? alert('Review posted') : null
+            })
+        }
     }
 
     return (

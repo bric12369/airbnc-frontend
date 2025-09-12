@@ -14,8 +14,7 @@ const Login = ({ users }) => {
 
     const handleClick = (e) => {
         e.preventDefault()
-        setUserSignedInId(userId)
-        console.log(userIdSignedIn)
+        setUserIdSignedIn(userId)
     }
 
     return (

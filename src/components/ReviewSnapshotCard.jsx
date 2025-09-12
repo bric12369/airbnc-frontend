@@ -3,7 +3,7 @@ const ReviewSnapshotCard = ({ review }) => {
 
     return (
         <div id='reviewSnapshotContainer'>
-            <div id="reviewerContainer">
+            <div className="flexContainer">
                 <img src={review.guest_avatar} alt={`Photo of ${review.guest}`} id="reviewerImg" />
                 <h3>{review.guest}</h3>
             </div>

@@ -1,9 +1,12 @@
 
 const ReviewSnapshotCard = ({ review }) => {
 
-    return(
+    return (
         <div id='reviewSnapshotContainer'>
-            <h3>{`Guest: ${review.guest}`}</h3>
+            <div id="reviewerContainer">
+                <img src={review.guest_avatar} alt={`Photo of ${review.guest}`} id="reviewerImg" />
+                <h3>{review.guest}</h3>
+            </div>
             <p>{`Rating: ${review.rating}`}</p>
             <p>{review.comment}</p>
             <p>{review.created_at.split('T')[0]}</p>

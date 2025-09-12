@@ -10,10 +10,10 @@ import useUsers from './hooks/useUsers'
 function App() {
   const [properties, setProperties] = useState([])
   const { users } = useUsers()
-  const [userSignedIn, setUserSignedIn] = useState()
+  const [userIdSignedIn, setUserIdSignedIn] = useState()
 
   return (
-    <UserContext value={{userSignedIn, setUserSignedIn}}>
+    <UserContext value={{userIdSignedIn, setUserIdSignedIn}}>
         <Header users={users}/>
         <BrowserRouter>
           <Routes>

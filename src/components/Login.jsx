@@ -6,7 +6,7 @@ const Login = ({ users }) => {
 
     const [userId, setUserId] = useState()
 
-    const { userSignedIn, setUserSignedIn } = useContext(UserContext)
+    const { userIdSignedIn, setUserIdSignedIn } = useContext(UserContext)
 
     const handleSelect = (e) => {
         setUserId(e.target.value)
@@ -14,8 +14,8 @@ const Login = ({ users }) => {
 
     const handleClick = (e) => {
         e.preventDefault()
-        setUserSignedIn(userId)
-        console.log(userSignedIn)
+        setUserSignedInId(userId)
+        console.log(userIdSignedIn)
     }
 
     return (

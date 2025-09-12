@@ -42,6 +42,13 @@ h1 {
   transition: 0.3s;
 }
 
+.button {
+  border-radius: 0.3rem;
+  border: none;
+  margin: 0.3rem 0.3rem;
+  box-shadow: 2px 1.5px 3px 1px rgba(0,0,0,0.6);
+}
+
 #propertyCard:hover {
   background-color: rgb(230, 230, 230)
 }

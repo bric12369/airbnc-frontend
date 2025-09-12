@@ -5,15 +5,17 @@ import Header from './components/Header'
 import HomePage from './components/HomePage'
 import PropertyDetailsPage from './components/PropertyDetailsPage'
 import UserContext from './Contexts/UserContext'
+import useUsers from './hooks/useUsers'
 
 function App() {
   const [properties, setProperties] = useState([])
+  const { users } = useUsers()
   const [userSignedIn, setUserSignedIn] = useState()
 
   return (
     <UserContext value={userSignedIn}>
       <>
-        <Header />
+        <Header users={users}/>
         <BrowserRouter>
           <Routes>
             <Route path='/' element={<HomePage properties={properties} setProperties={setProperties} />} />

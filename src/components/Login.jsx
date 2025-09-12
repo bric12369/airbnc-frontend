@@ -1,10 +1,15 @@
-import { useState } from "react"
 
-const Login = () => {
+const Login = ({ users }) => {
 
-    return(
+    return (
         <div>
-            <p>Login section</p>
+            <label>Choose a user:
+                <select>
+                    {users.map((user) => {
+                        return <option key={user.user_id}>{`${user.first_name} ${user.surname}`}</option>
+                    })}
+                </select>
+            </label>
         </div>
     )
 }

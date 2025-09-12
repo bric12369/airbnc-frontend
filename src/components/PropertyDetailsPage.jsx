@@ -3,9 +3,10 @@ import usePropertyDetails from "../hooks/usePropertyDetails"
 import ReviewSnapshotCard from "./ReviewSnapshotCard"
 import useReviews from "../hooks/useReviews"
 import PropertyAddReviewSection from "./PropertyAddReviewSection"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { motion } from "motion/react"
 import AnimatedButton from "./AnimatedButton"
+import UserContext from "../Contexts/UserContext"
 
 
 const PropertyDetailsPage = () => {
@@ -13,10 +14,15 @@ const PropertyDetailsPage = () => {
     const { property, isLoading } = usePropertyDetails()
     const { reviews } = useReviews()
     const [showReviewSection, setShowReviewSection] = useState(false)
+    const { userIdSignedIn } = useContext(UserContext)
 
     const handleClick = (e) => {
         e.preventDefault()
-        setShowReviewSection(true)
+        if (userIdSignedIn === undefined) {
+            alert('Please login to add a review')
+        } else {
+            setShowReviewSection(true)
+        }
     }
     
     if (isLoading || !property.images || !reviews.reviews) {

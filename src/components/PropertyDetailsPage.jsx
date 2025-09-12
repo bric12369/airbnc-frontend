@@ -4,6 +4,7 @@ import ReviewSnapshotCard from "./ReviewSnapshotCard"
 import useReviews from "../hooks/useReviews"
 import PropertyAddReviewSection from "./PropertyAddReviewSection"
 import { useState } from "react"
+import { motion } from "motion/react"
 
 
 const PropertyDetailsPage = () => {
@@ -38,7 +39,7 @@ const PropertyDetailsPage = () => {
                 {reviews.reviews.map((review) => {
                     return <ReviewSnapshotCard key={review.review_id} review={review} />
                 })}
-                {showReviewSection === true ? <PropertyAddReviewSection setShowReviewSection={setShowReviewSection} /> : <button onClick={handleClick}>Add review</button>}
+                {showReviewSection === true ? <PropertyAddReviewSection setShowReviewSection={setShowReviewSection} /> : <motion.button whileTap={{ scale: 0.8 }} whileHover={{ scale: 1.2}} onClick={handleClick}>Add review</motion.button>}
             </div>
         )
     }

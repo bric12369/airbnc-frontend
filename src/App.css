@@ -76,7 +76,7 @@ h1 {
   margin-right: 0.5rem;
 }
 
-#reviewerContainer {
+.flexContainer {
   display: flex;
   align-items: center;
   justify-content: center;

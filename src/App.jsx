@@ -14,7 +14,6 @@ function App() {
 
   return (
     <UserContext value={userSignedIn}>
-      <>
         <Header users={users}/>
         <BrowserRouter>
           <Routes>
@@ -22,7 +21,6 @@ function App() {
             <Route path='/properties/:id' element={<PropertyDetailsPage />} />
           </Routes>
         </BrowserRouter>
-      </>
     </UserContext>
   )
 }

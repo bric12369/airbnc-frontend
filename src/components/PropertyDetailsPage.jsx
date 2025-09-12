@@ -34,7 +34,7 @@ const PropertyDetailsPage = () => {
                 <figcaption>{`Host: ${property.host}`}</figcaption>
                 <NewBookingCard />
                 <h3 className="subheading">Reviews:</h3>
-                <p>{`Average rating: ${reviews.average_rating}`}</p>
+                <p>{`Average rating: ${reviews.average_rating.toFixed(2)}`}</p>
                 {reviews.reviews.map((review) => {
                     return <ReviewSnapshotCard key={review.review_id} review={review} />
                 })}

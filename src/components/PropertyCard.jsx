@@ -6,14 +6,14 @@ import AnimatedButton from './AnimatedButton'
 
 const PropertyCard = ({ property, showFavouriteButton = false }) => {
 
-    const user = useContext(UserContext)
+    const { userIdSignedIn } = useContext(UserContext)
 
     const handleFavourite = (e) => {
         e.preventDefault()
-        if (user.userIdSignedIn === undefined) {
+        if (userIdSignedIn === undefined) {
             alert('Please sign in to favourite a property')
         } else {
-            postFavourite(property.property_id, user.userIdSignedIn).then((response) => {
+            postFavourite(property.property_id, userIdSignedIn).then((response) => {
                 alert(response.data.msg)
             })
         }

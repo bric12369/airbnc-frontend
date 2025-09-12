@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 import { postFavourite } from '../utils/apiCalls'
 import UserContext from '../Contexts/UserContext'
+import AnimatedButton from './AnimatedButton'
 
 
 const PropertyCard = ({ property, showFavouriteButton = false }) => {
@@ -21,7 +22,7 @@ const PropertyCard = ({ property, showFavouriteButton = false }) => {
             <p>{`Located in ${property.location}`}</p>
             <img id='propertyCardImage' src={property.image} alt={`Photo of ${property.property_name}`} />
             <p>{`£${property.price_per_night} per night`}</p>
-            {showFavouriteButton && <button onClick={handleFavourite}>Favourite</button>}
+            {showFavouriteButton && <AnimatedButton text='Favourite' onClick={handleFavourite} /> }
         </div>
     )
 }

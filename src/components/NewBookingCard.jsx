@@ -1,6 +1,7 @@
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css';
 import useBooking from '../hooks/useBooking';
+import AnimatedButton from './AnimatedButton';
 
 
 const NewBookingCard = () => {
@@ -13,7 +14,7 @@ const NewBookingCard = () => {
                 bookedDates.some(bookedDate =>
                     bookedDate === date.toDateString()
                 )} />
-            <button disabled={buttonDisabled} onClick={handleSubmitBooking}>Submit booking</button>
+            <AnimatedButton text='Submit booking' onClick={handleSubmitBooking} disabled={buttonDisabled} />
         </div>
     )
 }

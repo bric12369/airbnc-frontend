@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { postReview } from "../utils/apiCalls"
 import { useParams } from "react-router"
+import AnimatedButton from "./AnimatedButton"
 
 const PropertyAddReviewSection = ({ setShowReviewSection }) => {
 
@@ -41,8 +42,8 @@ const PropertyAddReviewSection = ({ setShowReviewSection }) => {
                     <option value="5">5</option>
                 </select>
             </label>
-            <button>Submit review</button>
-            <button onClick={handleCancel}>Cancel</button>
+            <AnimatedButton text='Submit review' />
+            <AnimatedButton text='Cancel' onClick={handleCancel}/>
         </form>
     )
 }

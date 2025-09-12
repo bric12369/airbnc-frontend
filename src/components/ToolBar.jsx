@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { propertyTypes } from '../utils/filterOptions'
+import AnimatedButton from "./AnimatedButton"
 
 
 const ToolBar = ({ setFilters }) => {
@@ -46,7 +47,7 @@ const ToolBar = ({ setFilters }) => {
 
     return (
         <>
-            {<button onClick={handleOpenFilters}>{isOpen === false ? 'Filters' : 'Hide Filters'}</button>}
+            {<AnimatedButton onClick={handleOpenFilters} text={isOpen === false ? 'Filters' : 'Hide Filters'} />}
             {isOpen &&
                 <div id='toolBar'>
                     <form onSubmit={handleSubmit} id='filtersForm'>
@@ -71,8 +72,8 @@ const ToolBar = ({ setFilters }) => {
                         <label>Min price:
                             <input type="number" name='min_price' onChange={handleSelect} />
                         </label>
-                        <button>Submit</button>
-                        <button type='reset' onClick={handleResetFilters}>Reset filters</button>
+                        <AnimatedButton text='Submit' />
+                        <AnimatedButton text='Reset Filters' type='reset' onClick={handleResetFilters}/>
                     </form>
                 </div>}
         </>

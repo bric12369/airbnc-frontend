@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { Link } from "react-router"
 import Login from "./Login"
+import AnimatedIcon from "./AnimatedIcon"
 
 const Header = ({ users }) => {
 
@@ -15,10 +16,10 @@ const Header = ({ users }) => {
         <>
             <div id='header'>
                 <Link to='/'>
-                    <img src="/home.png" alt="home-icon" className="icon" />
+                    <AnimatedIcon src="/home.png" alt="home-icon" />
                 </Link>
                 <h1>AirBnC</h1>
-                <img src="/avatar.png" alt="profile-icon" className="icon" onClick={handleClick} />
+                <AnimatedIcon src='/avatar.png' alt='Profile icon' onClick={handleClick}/>
             </div>
             {profilePicClicked && <Login users={users} />}
         </>

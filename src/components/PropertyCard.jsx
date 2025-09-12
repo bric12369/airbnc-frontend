@@ -2,8 +2,8 @@ import { useContext } from 'react'
 import { Link } from 'react-router'
 import { postFavourite } from '../utils/apiCalls'
 import UserContext from '../Contexts/UserContext'
-import { motion } from 'motion/react'
 import AnimatedButton from './AnimatedButton'
+import AnimatedIcon from './AnimatedIcon'
 
 
 const PropertyCard = ({ property, showFavouriteButton = false }) => {
@@ -31,9 +31,10 @@ const PropertyCard = ({ property, showFavouriteButton = false }) => {
                 <img id='propertyCardImage' src={property.image} alt={`Photo of ${property.property_name}`} />
             </Link>
             <p>{`£${property.price_per_night} per night`}</p>
-            {showFavouriteButton && <motion.img src='/love.png' onClick={handleFavourite} className='icon' whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }} />}
+            {showFavouriteButton && <AnimatedIcon src='/love.png' onClick={handleFavourite} alt='Favourite button' />}
         </div>
     )
 }
 
 export default PropertyCard
+

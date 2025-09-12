@@ -13,14 +13,14 @@ function App() {
   const [userIdSignedIn, setUserIdSignedIn] = useState()
 
   return (
-    <UserContext value={{userIdSignedIn, setUserIdSignedIn}}>
-        <Header users={users}/>
-        <BrowserRouter>
-          <Routes>
-            <Route path='/' element={<HomePage properties={properties} setProperties={setProperties} />} />
-            <Route path='/properties/:id' element={<PropertyDetailsPage />} />
-          </Routes>
-        </BrowserRouter>
+    <UserContext value={{ userIdSignedIn, setUserIdSignedIn }}>
+      <BrowserRouter>
+        <Header users={users} />
+        <Routes>
+          <Route path='/' element={<HomePage properties={properties} setProperties={setProperties} />} />
+          <Route path='/properties/:id' element={<PropertyDetailsPage />} />
+        </Routes>
+      </BrowserRouter>
     </UserContext>
   )
 }

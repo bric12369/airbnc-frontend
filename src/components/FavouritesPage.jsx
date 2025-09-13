@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import UserContext from "../Contexts/UserContext"
 import { useParams, Navigate } from "react-router"
+import FavouritesList from "./FavouritesList"
 
 
 const FavouritesPage = () => {
@@ -18,7 +19,7 @@ const FavouritesPage = () => {
 
     return(
         <div>
-            <p>{`Welcome user number ${userIdSignedIn}`}</p>
+            <FavouritesList />
         </div>
     )
 }

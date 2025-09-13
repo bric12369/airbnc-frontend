@@ -26,9 +26,9 @@ const FavouritesList = () => {
         } else {
             return (
                 <div>
-                    <ToolBar />
+                    <h3>Your favourites</h3>
                     {favourites.map((favourite) => {
-                        return <PropertyCard key={(favourite.favourite_id)} property={favourite} />
+                        return <PropertyCard key={(favourite.favourite_id)} property={favourite} showDeleteFavouriteButton={true} />
                     })}
                 </div>
             )

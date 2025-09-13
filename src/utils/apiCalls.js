@@ -66,3 +66,9 @@ export function postReview(propertyId, reviewBody) {
         return response
     })
 }
+
+export function deleteFavourite(propertyId, userId) {
+    return apiClient.delete(`/api/properties/${propertyId}/users/${userId}/favourite`).then((response) => {
+        return response
+    })
+}

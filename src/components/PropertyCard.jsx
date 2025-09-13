@@ -1,11 +1,11 @@
 import { useContext } from 'react'
 import { Link } from 'react-router'
-import { postFavourite } from '../utils/apiCalls'
+import { deleteFavourite, postFavourite } from '../utils/apiCalls'
 import UserContext from '../Contexts/UserContext'
 import AnimatedIcon from './AnimatedIcon'
 
 
-const PropertyCard = ({ property, showFavouriteButton = false }) => {
+const PropertyCard = ({ property, showFavouriteButton = false, showDeleteFavouriteButton = false }) => {
 
     const { userIdSignedIn } = useContext(UserContext)
 
@@ -20,6 +20,15 @@ const PropertyCard = ({ property, showFavouriteButton = false }) => {
         }
     }
 
+    const handleDeleteFavourite = (e) => {
+        e.preventDefault()
+        deleteFavourite(property.property_id, userIdSignedIn).then((response) => {
+            if (response.status === 204) {
+                alert('Favourite removed')
+            }
+        })
+    }
+
     return (
         <div id='propertyCard'>
             <Link to={`/properties/${property.property_id}`}>
@@ -31,6 +40,7 @@ const PropertyCard = ({ property, showFavouriteButton = false }) => {
             </Link>
             <p>{`£${property.price_per_night} per night`}</p>
             {showFavouriteButton && <AnimatedIcon src='/love.png' onClick={handleFavourite} alt='Favourite button' />}
+            {showDeleteFavouriteButton && <AnimatedIcon src='/delete.png' onClick={handleDeleteFavourite} alt='Delete favourite button' />}
         </div>
     )
 }

@@ -2,7 +2,6 @@ import { useContext } from 'react'
 import { Link } from 'react-router'
 import { postFavourite } from '../utils/apiCalls'
 import UserContext from '../Contexts/UserContext'
-import AnimatedButton from './AnimatedButton'
 import AnimatedIcon from './AnimatedIcon'
 
 

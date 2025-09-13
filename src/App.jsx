@@ -1,16 +1,23 @@
 import './App.css'
 import { BrowserRouter, Route, Routes } from 'react-router'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Header from './components/Header'
 import HomePage from './components/HomePage'
 import PropertyDetailsPage from './components/PropertyDetailsPage'
 import UserContext from './Contexts/UserContext'
 import useUsers from './hooks/useUsers'
+import FavouritesPage from './components/FavouritesPage'
 
 function App() {
   const [properties, setProperties] = useState([])
   const { users } = useUsers()
-  const [userIdSignedIn, setUserIdSignedIn] = useState()
+  const [userIdSignedIn, setUserIdSignedIn] = useState(() => {
+    return localStorage.getItem('userIdSignedIn') || undefined
+  })
+
+  useEffect(() => {
+    localStorage.setItem('userIdSignedIn', userIdSignedIn)
+  }, [userIdSignedIn])
 
   return (
     <UserContext value={{ userIdSignedIn, setUserIdSignedIn }}>
@@ -19,6 +26,7 @@ function App() {
         <Routes>
           <Route path='/' element={<HomePage properties={properties} setProperties={setProperties} />} />
           <Route path='/properties/:id' element={<PropertyDetailsPage />} />
+          <Route path={`/user/:id/favourites`} element={<FavouritesPage userId={userIdSignedIn}/>} />
         </Routes>
       </BrowserRouter>
     </UserContext>

@@ -9,6 +9,7 @@ const FavouritesList = () => {
     const [favourites, setFavourites] = useState([])
     const { userIdSignedIn } = useContext(UserContext)
     const [isLoading, setIsloading] = useState(true)
+    const [newRequest, setNewRequest] = useState(0)
 
     useEffect(() => {
         setIsloading(true)
@@ -16,7 +17,7 @@ const FavouritesList = () => {
             response.data.favourites !== undefined ? setFavourites(response.data.favourites) : setFavourites(response.data)
             setIsloading(false)
         })
-    }, [])
+    }, [newRequest])
 
     if (isLoading) {
         return <p>Loading...</p>
@@ -28,7 +29,7 @@ const FavouritesList = () => {
                 <div>
                     <h3>Your favourites</h3>
                     {favourites.map((favourite) => {
-                        return <PropertyCard key={(favourite.favourite_id)} property={favourite} showDeleteFavouriteButton={true} />
+                        return <PropertyCard key={(favourite.favourite_id)} property={favourite} showDeleteFavouriteButton={true} setNewRequest={setNewRequest} />
                     })}
                 </div>
             )

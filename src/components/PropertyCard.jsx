@@ -5,7 +5,7 @@ import UserContext from '../Contexts/UserContext'
 import AnimatedIcon from './AnimatedIcon'
 
 
-const PropertyCard = ({ property, showFavouriteButton = false, showDeleteFavouriteButton = false }) => {
+const PropertyCard = ({ property, showFavouriteButton = false, showDeleteFavouriteButton = false, setNewRequest }) => {
 
     const { userIdSignedIn } = useContext(UserContext)
 
@@ -24,6 +24,7 @@ const PropertyCard = ({ property, showFavouriteButton = false, showDeleteFavouri
         e.preventDefault()
         deleteFavourite(property.property_id, userIdSignedIn).then((response) => {
             if (response.status === 204) {
+                setNewRequest((curr) => curr === 0 ? 1 : 0)
                 alert('Favourite removed')
             }
         })

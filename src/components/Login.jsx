@@ -20,7 +20,7 @@ const Login = ({ users }) => {
 
     const handleLogout = (e) => {
         e.preventDefault()
-        setUserIdSignedIn(undefined)
+        setUserIdSignedIn(null)
     }
 
     return (

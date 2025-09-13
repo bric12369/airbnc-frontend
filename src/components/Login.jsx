@@ -18,6 +18,11 @@ const Login = ({ users }) => {
         alert('Login successful')
     }
 
+    const handleLogout = (e) => {
+        e.preventDefault()
+        setUserIdSignedIn(undefined)
+    }
+
     return (
         <div>
             <select name="user" defaultValue={''} onChange={handleSelect}>
@@ -27,6 +32,7 @@ const Login = ({ users }) => {
                 })}
             </select>
             <AnimatedButton text='Submit' onClick={handleClick} disabled={!userId} />
+            {userIdSignedIn !== undefined && <AnimatedButton text='Log out' onClick={handleLogout} />}
         </div>
     )
 }

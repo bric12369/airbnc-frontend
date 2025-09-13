@@ -1,7 +1,7 @@
 import { motion } from "motion/react"
 
 
-const AnimatedButton = ({ text, onClick, disabled }) => {
+const AnimatedButton = ({ text, onClick, disabled, id }) => {
 
     return (
     <motion.button whileHover={{ scale: 1.2 }} 
@@ -9,6 +9,7 @@ const AnimatedButton = ({ text, onClick, disabled }) => {
     style={{ cursor: 'pointer'}}
     onClick={onClick} 
     className='button'
+    id={id}
     disabled={disabled}>{text}</motion.button>
     )
 }

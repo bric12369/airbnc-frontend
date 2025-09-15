@@ -41,6 +41,12 @@ export function fetchUsers() {
     })
 }
 
+export function fetchUserById(id) {
+    return apiClient.get(`/api/users/${id}`).then((response) => {
+        return response
+    })
+}
+
 export function fetchUserFavourites(id) {
     return apiClient.get(`/api/users/${id}/favourites`).then((response) => {
         return response

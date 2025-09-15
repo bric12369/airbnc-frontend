@@ -7,6 +7,7 @@ import PropertyDetailsPage from './components/PropertyDetailsPage'
 import UserContext from './Contexts/UserContext'
 import useUsers from './hooks/useUsers'
 import FavouritesPage from './components/FavouritesPage'
+import ProfilePage from './components/ProfilePage'
 
 function App() {
   const [properties, setProperties] = useState([])
@@ -30,7 +31,8 @@ function App() {
         <Routes>
           <Route path='/' element={<HomePage properties={properties} setProperties={setProperties} />} />
           <Route path='/properties/:id' element={<PropertyDetailsPage />} />
-          <Route path={`/user/:id/favourites`} element={<FavouritesPage userId={userIdSignedIn}/>} />
+          <Route path='/user/:id/favourites' element={<FavouritesPage />} />
+          <Route path='/user/:id/profile' element={<ProfilePage />} />
         </Routes>
       </BrowserRouter>
     </UserContext>

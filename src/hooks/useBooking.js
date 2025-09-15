@@ -14,7 +14,7 @@ export default function useBooking() {
     
         const { id } = useParams()
     
-        const user = useContext(UserContext)
+        const { userIdSignedIn } = useContext(UserContext)
     
         useEffect(() => {
             fetchPropertyBookings(id).then((response) => {
@@ -38,7 +38,7 @@ export default function useBooking() {
             if (start && end) setButtonDisabled(false)
     
             setNewBooking({
-                'guest_id': user === undefined ? 1 : user,
+                'guest_id': userIdSignedIn,
                 'check_in_date': formatDate(start),
                 'check_out_date': formatDate(end)
             })
@@ -49,8 +49,8 @@ export default function useBooking() {
             postBooking(id, newBooking).then((response) => {
                 alert(response.data.msg)
                 setRetriggerFetch(retriggerFetch === 1 ? 0 : 1)
+                setButtonDisabled(true)
             })
-            setButtonDisabled(true)
         }
 
     return { bookedDates, handleChange, handleSubmitBooking, buttonDisabled }

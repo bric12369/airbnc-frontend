@@ -15,17 +15,21 @@ function App() {
   const [bookings, setBookings] = useState([])
   const [profile, setProfile] = useState({})
   const [error, setError] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
   const { users } = useUsers()
   const [userIdSignedIn, setUserIdSignedIn] = useState(() => {
     return localStorage.getItem('userIdSignedIn') || undefined
   })
 
   useEffect(() => {
+    setIsLoading(true)
     fetchUserById(userIdSignedIn).then((response) => {
       setProfile(response.data.user)
       setError('')
     }).catch((error) => {
       setError(error.response.data.msg)
+    }).finally(() => {
+      setIsLoading(false)
     })
   }, [userIdSignedIn])
 
@@ -45,7 +49,7 @@ function App() {
           <Route path='/' element={<HomePage properties={properties} setProperties={setProperties} />} />
           <Route path='/properties/:id' element={<PropertyDetailsPage profile={profile} />} />
           <Route path='/user/:id/favourites' element={<FavouritesPage />} />
-          <Route path='/user/:id/profile' element={<ProfilePage profile={profile} setProfile={setProfile} bookings={bookings} setBookings={setBookings} error={error} />} />
+          <Route path='/user/:id/profile' element={<ProfilePage profile={profile} setProfile={setProfile} bookings={bookings} setBookings={setBookings} error={error} isLoading={isLoading} />} />
         </Routes>
       </BrowserRouter>
     </UserContext>

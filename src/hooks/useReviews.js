@@ -7,12 +7,13 @@ export default function useReviews() {
     const { id } = useParams()
 
     const [reviews, setReviews] = useState({})
+    const [reload, setReload] = useState(0)
 
     useEffect(() => {
         fetchPropertyReviews(id).then((response) => {
             setReviews(response.data)
         })
-    }, [])
+    }, [reload])
 
-    return { reviews }
+    return { reviews, setReload }
 }

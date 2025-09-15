@@ -8,14 +8,26 @@ import UserContext from './Contexts/UserContext'
 import useUsers from './hooks/useUsers'
 import FavouritesPage from './components/FavouritesPage'
 import ProfilePage from './components/ProfilePage'
+import { fetchUserById } from './utils/apiCalls'
 
 function App() {
   const [properties, setProperties] = useState([])
   const [bookings, setBookings] = useState([])
+  const [profile, setProfile] = useState({})
+  const [error, setError] = useState('')
   const { users } = useUsers()
   const [userIdSignedIn, setUserIdSignedIn] = useState(() => {
     return localStorage.getItem('userIdSignedIn') || undefined
   })
+
+  useEffect(() => {
+    fetchUserById(userIdSignedIn).then((response) => {
+      setProfile(response.data.user)
+      setError('')
+    }).catch((error) => {
+      setError(error.response.data.msg)
+    })
+  }, [userIdSignedIn])
 
   useEffect(() => {
     if (userIdSignedIn === null) {
@@ -31,9 +43,9 @@ function App() {
         <Header users={users} />
         <Routes>
           <Route path='/' element={<HomePage properties={properties} setProperties={setProperties} />} />
-          <Route path='/properties/:id' element={<PropertyDetailsPage />} />
+          <Route path='/properties/:id' element={<PropertyDetailsPage profile={profile} />} />
           <Route path='/user/:id/favourites' element={<FavouritesPage />} />
-          <Route path='/user/:id/profile' element={<ProfilePage bookings={bookings} setBookings={setBookings} />} />
+          <Route path='/user/:id/profile' element={<ProfilePage profile={profile} setProfile={setProfile} bookings={bookings} setBookings={setBookings} error={error} />} />
         </Routes>
       </BrowserRouter>
     </UserContext>

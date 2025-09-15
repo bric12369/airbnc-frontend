@@ -90,6 +90,12 @@ export function deleteFavourite(propertyId, userId) {
     })
 }
 
+export function deleteReview(reviewId) {
+    return apiClient.delete(`/api/reviews/${reviewId}`).then((response) => {
+        return response
+    })
+}
+
 export function updateUserDetails(userId, profileInputs) {
     return apiClient.patch(`/api/users/${userId}`, profileInputs).then((response) => {
         return response

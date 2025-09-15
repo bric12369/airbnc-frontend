@@ -9,10 +9,10 @@ import AnimatedButton from "./AnimatedButton"
 import UserContext from "../Contexts/UserContext"
 
 
-const PropertyDetailsPage = () => {
+const PropertyDetailsPage = ({ profile }) => {
 
     const { property, isLoading } = usePropertyDetails()
-    const { reviews } = useReviews()
+    const { reviews, setReload } = useReviews()
     const [showReviewSection, setShowReviewSection] = useState(false)
     const { userIdSignedIn } = useContext(UserContext)
 
@@ -48,7 +48,7 @@ const PropertyDetailsPage = () => {
                         <h3 className="subheading">Reviews:</h3>
                         <p>{`Average rating: ${reviews.average_rating.toFixed(2)}`}</p>
                         {reviews.reviews.map((review) => {
-                            return <ReviewSnapshotCard key={review.review_id} review={review} />
+                            return <ReviewSnapshotCard key={review.review_id} review={review} profile={profile} setReload={setReload} />
                         })}
                     </>
                 ) : (

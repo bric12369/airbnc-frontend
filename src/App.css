@@ -46,7 +46,7 @@ h1 {
   z-index: 1000;
 }
 
-#propertyCard {
+#propertyCard, #profileViewBox {
   margin: 0.7rem 0;
   padding: 0.5rem;
   border-radius: 1.5rem;
@@ -109,4 +109,28 @@ h1 {
 #reviewForm {
   overflow: visible;
   padding: 3rem;
+}
+
+.profileContent {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+}
+
+.profileContent label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+}
+
+.profileContent input {
+  padding: 0.25rem;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  margin-top: 0.25rem;
+}
+
+.profileContent p {
+  text-align: left;
+  border-radius: 4px;
 }

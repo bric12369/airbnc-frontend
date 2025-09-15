@@ -34,12 +34,12 @@ const ProfileDetails = ({ profile, setProfile }) => {
     }
 
     return (
-        < div id="profileFormContainer" >
+        < div >
             <h3>Your details</h3>
             {toggle === 1 ?
                 <>
 
-                    <form action="">
+                    <form className="profileContent">
                         <label>First name:
                             <input type="text" placeholder={profile.first_name} name="first_name" onChange={handleChange}/>
                         </label>
@@ -57,12 +57,12 @@ const ProfileDetails = ({ profile, setProfile }) => {
 
                 </>
                     : 
-                    <>
+                    <div className="profileContent" id="profileViewBox">
                         <p>{`First name: ${profile.first_name}`}</p>
                         <p>{`Surname: ${profile.surname}`}</p>
                         <p>{`Email: ${profile.email}`}</p>
                         <p>{`Phone number: ${profile.phone_number}`}</p>
-                    </>
+                    </div>
                 }
                 <AnimatedButton onClick={handleClick} text={toggle === 0 ? "Edit details" : "Cancel"} />
         </div >

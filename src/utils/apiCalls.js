@@ -81,3 +81,9 @@ export function deleteFavourite(propertyId, userId) {
         return response
     })
 }
+
+export function updateUserDetails(userId, profileInputs) {
+    return apiClient.patch(`/api/users/${userId}`, profileInputs).then((response) => {
+        return response
+    })
+}

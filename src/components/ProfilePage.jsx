@@ -31,7 +31,7 @@ const ProfilePage = () => {
             return (
                 <div>
                     <h2>{`Hello, ${profile.first_name}!`}</h2>
-                    <ProfileDetails profile={profile} />
+                    <ProfileDetails profile={profile} setProfile={setProfile} />
                 </div>
             )
         }

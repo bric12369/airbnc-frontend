@@ -43,7 +43,8 @@ const PropertyAddReviewSection = ({ setShowReviewSection, setReload }) => {
         <form onSubmit={handleSubmit} id='reviewForm'>
             <input type="text" name="comment" placeholder='Leave a review...' onChange={handleInput} />
             <label>Rating:
-                <select name="rating" onChange={handleInput}>
+                <select name="rating" defaultValue="" onChange={handleInput}>
+                    <option value="" disabled>0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>

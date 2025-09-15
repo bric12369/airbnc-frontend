@@ -4,7 +4,7 @@ import { useParams } from "react-router"
 import AnimatedButton from "./AnimatedButton"
 import UserContext from "../Contexts/UserContext"
 
-const PropertyAddReviewSection = ({ setShowReviewSection }) => {
+const PropertyAddReviewSection = ({ setShowReviewSection, setReload }) => {
 
     const [reviewBody, setReviewBody] = useState({})
     const { id } = useParams()
@@ -32,6 +32,9 @@ const PropertyAddReviewSection = ({ setShowReviewSection }) => {
         } else {
             postReview(id, reviewBody).then((response) => {
                 response.status === 201 ? alert('Review posted') : null
+                setReload((prev) => {
+                    prev === 0 ? 1 : 0
+                })
             })
         }
     }

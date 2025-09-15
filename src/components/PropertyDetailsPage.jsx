@@ -54,7 +54,7 @@ const PropertyDetailsPage = ({ profile }) => {
                 ) : (
                     <p>No reviews yet</p>
                 )}
-                {showReviewSection === true ? <PropertyAddReviewSection setShowReviewSection={setShowReviewSection} /> : <AnimatedButton text={'Add review'} onClick={handleClick} />}
+                {showReviewSection === true ? <PropertyAddReviewSection setShowReviewSection={setShowReviewSection} setReload={setReload} /> : <AnimatedButton text={'Add review'} onClick={handleClick} />}
             </div>
         )
     }

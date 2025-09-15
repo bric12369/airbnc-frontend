@@ -50,6 +50,9 @@ export function fetchUserById(id) {
 export function fetchUserFavourites(id) {
     return apiClient.get(`/api/users/${id}/favourites`).then((response) => {
         return response
+    }).catch((error) => {
+        console.log(error)
+        throw error
     })
 }
 

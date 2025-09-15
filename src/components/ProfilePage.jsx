@@ -1,47 +1,41 @@
 import { useContext, useEffect, useState } from "react"
 import UserContext from "../Contexts/UserContext"
 import { fetchUserById } from "../utils/apiCalls"
-import AnimatedButton from "./AnimatedButton"
+import ProfileDetails from "./ProfileDetails"
 
 const ProfilePage = () => {
 
     const { userIdSignedIn } = useContext(UserContext)
     const [profile, setProfile] = useState({})
-    const [isLoading, setIsLoading] = useState(true)
+    const [isLoading, setIsLoading] = useState(false)
+    const [error, setError] = useState('')
 
     useEffect(() => {
         setIsLoading(true)
-        fetchUserById(userIdSignedIn).then((response) => {
-            setProfile(response.data.user)
-            console.log(response.data.user)
-            setIsLoading(false)
+            fetchUserById(userIdSignedIn).then((response) => {
+                setProfile(response.data.user)
+                setIsLoading(false)
+                setError('')
+            }).catch((error) => {
+            setError(error.response.data.msg)
         })
     }, [userIdSignedIn])
 
-    return (
-        <div>
-            {isLoading && <p>Loading...</p>}
-            <h2>{`Hello, ${profile.first_name}!`}</h2>
-            <div id="profileFormContainer">
-                <h3>Your details</h3>
-                <form action="">
-                    <label>First name:
-                        <input type="text" placeholder={profile.first_name} />
-                    </label>
-                    <label>Surname:
-                        <input type="text" placeholder={profile.surname}/>
-                    </label>
-                    <label>Email:
-                        <input type="text" placeholder={profile.email}/>
-                    </label>
-                    <label>Phone number:
-                        <input type="number" placeholder={profile.phone_number} />
-                    </label>
-                    <AnimatedButton text='Update details' />
-                </form>
-            </div>
-        </div>
-    )
+    if (error) {
+        return <p>Please login to view your profile</p>
+    } else {
+
+        if (isLoading) {
+            return <p>Loading...</p>
+        } else {
+            return (
+                <div>
+                    <h2>{`Hello, ${profile.first_name}!`}</h2>
+                    <ProfileDetails profile={profile} />
+                </div>
+            )
+        }
+    }
 }
 
 export default ProfilePage

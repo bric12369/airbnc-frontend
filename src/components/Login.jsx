@@ -3,7 +3,7 @@ import UserContext from "../Contexts/UserContext"
 import AnimatedButton from "./AnimatedButton"
 import { useNavigate } from "react-router"
 
-const Login = ({ users }) => {
+const Login = ({ users, setProfilePicClicked }) => {
 
     const [userId, setUserId] = useState()
     const navigate = useNavigate()
@@ -17,19 +17,20 @@ const Login = ({ users }) => {
     const handleLogin = (e) => {
         e.preventDefault()
         setUserIdSignedIn(userId)
-        setSignedIn(true)
+        setProfilePicClicked(false)
         alert('Login successful')
     }
 
     const handleLogout = (e) => {
         e.preventDefault()
         setUserIdSignedIn(null)
-        setSignedIn(false)
+        setProfilePicClicked(false)
         alert('Log out successful')
     }
 
     const handleViewProfile = (e) => {
         e.preventDefault()
+        setProfilePicClicked(false)
         navigate(`/user/${userIdSignedIn}/profile`)
     }
 

@@ -21,7 +21,7 @@ const Header = ({ users }) => {
                 <h1>AirBnC</h1>
                 <AnimatedIcon src='/avatar.png' alt='Profile icon' onClick={handleClick}/>
             </div>
-            {profilePicClicked && <Login users={users} />}
+            {profilePicClicked && <Login users={users} setProfilePicClicked={setProfilePicClicked} />}
         </>
     )
 }

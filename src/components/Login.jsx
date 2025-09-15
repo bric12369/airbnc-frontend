@@ -1,10 +1,12 @@
 import { useContext, useState } from "react"
 import UserContext from "../Contexts/UserContext"
 import AnimatedButton from "./AnimatedButton"
+import { useNavigate } from "react-router"
 
 const Login = ({ users }) => {
 
     const [userId, setUserId] = useState()
+    const navigate = useNavigate()
 
     const { userIdSignedIn, setUserIdSignedIn } = useContext(UserContext)
 
@@ -12,27 +14,40 @@ const Login = ({ users }) => {
         setUserId(e.target.value)
     }
 
-    const handleClick = (e) => {
+    const handleLogin = (e) => {
         e.preventDefault()
         setUserIdSignedIn(userId)
+        setSignedIn(true)
         alert('Login successful')
     }
 
     const handleLogout = (e) => {
         e.preventDefault()
         setUserIdSignedIn(null)
+        setSignedIn(false)
+        alert('Log out successful')
+    }
+
+    const handleViewProfile = (e) => {
+        e.preventDefault()
+        navigate(`/user/${userIdSignedIn}/profile`)
     }
 
     return (
         <div>
-            <select name="user" defaultValue={''} onChange={handleSelect}>
-                <option value='' disabled>Choose a user</option>
-                {users.map((user) => {
-                    return <option key={user.user_id} value={user.user_id}>{`${user.first_name} ${user.surname}`}</option>
-                })}
-            </select>
-            <AnimatedButton text='Submit' onClick={handleClick} disabled={!userId} />
-            {userIdSignedIn !== undefined && <AnimatedButton text='Log out' onClick={handleLogout} />}
+            {userIdSignedIn ? <>
+                <AnimatedButton text='Log out' onClick={handleLogout} />
+                <AnimatedButton text='View profile' onClick={handleViewProfile}/>
+            </> : <>
+                <select name="user" defaultValue={''} onChange={handleSelect}>
+                    <option value='' disabled>Choose a user</option>
+                    {users.map((user) => {
+                        return <option key={user.user_id} value={user.user_id}>{`${user.first_name} ${user.surname}`}</option>
+                    })}
+                </select>
+                <AnimatedButton text='Submit' onClick={handleLogin} disabled={!userId} />
+
+            </>}
         </div>
     )
 }

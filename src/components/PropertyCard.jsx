@@ -31,13 +31,13 @@ const PropertyCard = ({ property, showFavouriteButton = false, showDeleteFavouri
     }
 
     return (
-        <div id='propertyCard'>
+        <div className='propertyCard'>
             <Link to={`/properties/${property.property_id}`}>
                 <h3>{property.property_name}</h3>
             </Link>
             <p>{`Located in ${property.location}`}</p>
             <Link to={`/properties/${property.property_id}`}>
-                <img id='propertyCardImage' src={property.image} alt={`Photo of ${property.property_name}`} />
+                <img className='propertyCardImage' src={property.image} alt={`Photo of ${property.property_name}`} />
             </Link>
             <p>{`£${property.price_per_night} per night`}</p>
             {showFavouriteButton && <AnimatedIcon src='/love.png' onClick={handleFavourite} alt='Favourite button' />}

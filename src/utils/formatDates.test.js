@@ -1,5 +1,5 @@
 import { describe, test, expect } from "vitest";
-import { getDateRange, convertDateISOtoString, formatDate } from "./formatDates";
+import { getDateRange, convertDateISOtoString, formatDate, formatDateToDDMMYYYY } from "./formatDates";
 
 describe('convertDateISOToString', () => {
     test('converts an ISO formatted date to string format', () => {
@@ -40,5 +40,11 @@ describe('formatDate', () => {
     test('formats date in yyyy-mm-dd format when given a date object', () => {
         const date = new Date('Wed Apr 01 2026 00:00:00 GMT+0100 (British Summer Time)')
         expect(formatDate(date)).toBe('2026-04-01')
+    })
+})
+
+describe('formatDateToDDMMYYYY', () => {
+    test('returns dates reformatted from YYYY-MM-DD to DD/MM/YYYY' , () => {
+        expect(formatDateToDDMMYYYY('2025-04-15')).toBe('15/04/2025')
     })
 })

@@ -1,3 +1,4 @@
+import { formatDateToDDMMYYYY } from "../utils/formatDates"
 
 const ReviewSnapshotCard = ({ review }) => {
 
@@ -9,7 +10,7 @@ const ReviewSnapshotCard = ({ review }) => {
             </div>
             <p>{`Rating: ${review.rating}`}</p>
             <p>{review.comment}</p>
-            <p>{review.created_at.split('T')[0]}</p>
+            <p>{formatDateToDDMMYYYY(review.created_at.split('T')[0])}</p>
         </div>
     )
 }

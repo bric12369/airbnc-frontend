@@ -2,8 +2,9 @@ import { useContext, useEffect, useState } from "react"
 import UserContext from "../Contexts/UserContext"
 import { fetchUserById } from "../utils/apiCalls"
 import ProfileDetails from "./ProfileDetails"
+import BookingsList from "./BookingsList"
 
-const ProfilePage = () => {
+const ProfilePage = ({ bookings, setBookings }) => {
 
     const { userIdSignedIn } = useContext(UserContext)
     const [profile, setProfile] = useState({})
@@ -32,6 +33,7 @@ const ProfilePage = () => {
                 <div>
                     <h2>{`Hello, ${profile.first_name}!`}</h2>
                     <ProfileDetails profile={profile} setProfile={setProfile} />
+                    <BookingsList bookings={bookings} setBookings={setBookings}/>
                 </div>
             )
         }

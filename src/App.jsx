@@ -11,6 +11,7 @@ import ProfilePage from './components/ProfilePage'
 
 function App() {
   const [properties, setProperties] = useState([])
+  const [bookings, setBookings] = useState([])
   const { users } = useUsers()
   const [userIdSignedIn, setUserIdSignedIn] = useState(() => {
     return localStorage.getItem('userIdSignedIn') || undefined
@@ -32,7 +33,7 @@ function App() {
           <Route path='/' element={<HomePage properties={properties} setProperties={setProperties} />} />
           <Route path='/properties/:id' element={<PropertyDetailsPage />} />
           <Route path='/user/:id/favourites' element={<FavouritesPage />} />
-          <Route path='/user/:id/profile' element={<ProfilePage />} />
+          <Route path='/user/:id/profile' element={<ProfilePage bookings={bookings} setBookings={setBookings} />} />
         </Routes>
       </BrowserRouter>
     </UserContext>

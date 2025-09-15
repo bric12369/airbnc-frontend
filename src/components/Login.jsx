@@ -26,6 +26,7 @@ const Login = ({ users, setProfilePicClicked }) => {
         setUserIdSignedIn(null)
         setProfilePicClicked(false)
         alert('Log out successful')
+        navigate('/')
     }
 
     const handleViewProfile = (e) => {

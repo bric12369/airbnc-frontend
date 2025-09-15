@@ -52,7 +52,7 @@ const ProfileDetails = ({ profile, setProfile }) => {
                         <label>Phone number:
                             <input type="number" placeholder={profile.phone_number} name="phone_number" onChange={handleChange}/>
                         </label>
-                        <AnimatedButton text="Submit" onClick={handleSubmit} />
+                        <AnimatedButton text="Submit" onClick={handleSubmit} disabled={!Object.values(profileInputs).some(value => value.trim() !== "")} />
                     </form>
 
                 </>

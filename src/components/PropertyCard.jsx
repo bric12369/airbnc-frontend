@@ -31,7 +31,7 @@ const PropertyCard = ({ property, showFavouriteButton = false, showDeleteFavouri
     }
 
     return (
-        <div className='propertyCard'>
+        <div className='Card3D'>
             <Link to={`/properties/${property.property_id}`}>
                 <h3>{property.property_name}</h3>
             </Link>

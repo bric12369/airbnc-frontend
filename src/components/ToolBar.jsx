@@ -1,24 +1,25 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { propertyTypes } from '../utils/filterOptions'
 import AnimatedButton from "./AnimatedButton"
+import { useSearchParams } from "react-router"
 
 
 const ToolBar = ({ setFilters }) => {
 
     const [formInputs, setFormInputs] = useState({})
+    const [searchParams, setSearchParams] = useSearchParams()
 
     const [isOpen, setIsOpen] = useState(false)
 
     const handleSelect = (e) => {
-        const select = e.target.name
-        const choice = e.target.value
+        const { name, value } = e.target
         const selectedIndex = e.target.selectedIndex
 
         setFormInputs(prevInputs => {
 
-            let updated = { ...prevInputs, [select]: choice }
+            let updated = { ...prevInputs, [name]: value }
 
-            if (select === 'sort') {
+            if (name === 'sort') {
                 if (selectedIndex === 2) {
                     updated['dir'] = 'asc'
                 } else {
@@ -33,16 +34,19 @@ const ToolBar = ({ setFilters }) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         setFilters(formInputs)
+        setSearchParams(formInputs)
     }
 
     const handleResetFilters = (e) => {
         e.preventDefault()
         document.getElementById('filtersForm').reset()
         setFilters({})
+        setFormInputs({})
+        setSearchParams({})
     }
 
-    const handleOpenFilters = (e) => {
-        isOpen === false ? setIsOpen(true) : setIsOpen(false)
+    const handleOpenFilters = () => {
+        setIsOpen((prev) => !prev)
     }
 
     return (

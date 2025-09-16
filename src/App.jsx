@@ -18,26 +18,30 @@ function App() {
   const [isLoading, setIsLoading] = useState(false)
   const { users } = useUsers()
   const [userIdSignedIn, setUserIdSignedIn] = useState(() => {
-    return localStorage.getItem('userIdSignedIn') || undefined
+    return localStorage.getItem('userIdSignedIn')
   })
 
-  useEffect(() => {
-    setIsLoading(true)
-    fetchUserById(userIdSignedIn).then((response) => {
-      setProfile(response.data.user)
-      setError('')
-    }).catch((error) => {
-      setError(error.response.data.msg)
-    }).finally(() => {
-      setIsLoading(false)
-    })
-  }, [userIdSignedIn])
+  // useEffect(() => {
+  //   if (userIdSignedIn) {
+
+  //   }
+  // }, [userIdSignedIn])
 
   useEffect(() => {
     if (userIdSignedIn === null) {
       localStorage.removeItem('userIdSignedIn')
     } else {
       localStorage.setItem('userIdSignedIn', userIdSignedIn)
+      console.log(userIdSignedIn)
+      setIsLoading(true)
+      fetchUserById(userIdSignedIn).then((response) => {
+        setProfile(response.data.user)
+        setError('')
+      }).catch((error) => {
+        setError(error.response.data.msg)
+      }).finally(() => {
+        setIsLoading(false)
+      })
     }
   }, [userIdSignedIn])
 

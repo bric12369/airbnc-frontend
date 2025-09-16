@@ -4,10 +4,9 @@ import AnimatedButton from "./AnimatedButton"
 import { useSearchParams } from "react-router"
 
 
-const ToolBar = ({ setFilters }) => {
+const ToolBar = ({ setSearchParams }) => {
 
     const [formInputs, setFormInputs] = useState({})
-    const [searchParams, setSearchParams] = useSearchParams()
 
     const [isOpen, setIsOpen] = useState(false)
 
@@ -33,14 +32,12 @@ const ToolBar = ({ setFilters }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        setFilters(formInputs)
         setSearchParams(formInputs)
     }
 
     const handleResetFilters = (e) => {
         e.preventDefault()
         document.getElementById('filtersForm').reset()
-        setFilters({})
         setFormInputs({})
         setSearchParams({})
     }

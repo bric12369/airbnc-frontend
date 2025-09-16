@@ -13,7 +13,7 @@ const ReviewSnapshotCard = ({ review, profile, setReload }) => {
         deleteReview(review.review_id).then((response) => {
             if (response.status === 204) {
                 setReload((prev) => {
-                    prev === 0 ? 1 : 0
+                    return prev === 0 ? 1 : 0
                 })
                 alert('Review deleted successfully')
             }

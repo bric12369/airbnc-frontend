@@ -33,7 +33,7 @@ const PropertyAddReviewSection = ({ setShowReviewSection, setReload }) => {
             postReview(id, reviewBody).then((response) => {
                 response.status === 201 ? alert('Review posted') : null
                 setReload((prev) => {
-                    prev === 0 ? 1 : 0
+                    return prev === 0 ? 1 : 0
                 })
             })
         }

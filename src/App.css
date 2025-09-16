@@ -33,6 +33,35 @@ h1 {
   margin: 1rem 0;
 }
 
+#filtersForm {
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+  padding: 0.5rem 1.5rem;
+}
+
+.filter {
+  width: 10rem;
+}
+
+#filtersForm .button {
+  width: 6rem;
+  align-self: center;
+  margin: 0.5rem 0;
+}
+
+#filtersForm label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#filtersForm #formButtons {
+  display: flex;
+  justify-content: space-around;
+  padding: 0 1rem;
+}
+
 #fixedFooter {
   background-color: rgb(238, 238, 238, 0.5);
   position: fixed;

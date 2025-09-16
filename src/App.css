@@ -26,7 +26,11 @@ h1 {
 
 .icon {
   height: 3.2rem;
-  padding: 0 1.25rem;
+  padding: 0.5rem;
+  margin: 0 0.5rem;
+  box-shadow: 2px 2px 5px 2px rgba(0,0,0,0.3);
+  background-color: rgb(250, 250, 250);
+  border-radius: 1rem;
 }
 
 #homePage {

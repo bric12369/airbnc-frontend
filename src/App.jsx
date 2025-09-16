@@ -21,12 +21,6 @@ function App() {
     return localStorage.getItem('userIdSignedIn')
   })
 
-  // useEffect(() => {
-  //   if (userIdSignedIn) {
-
-  //   }
-  // }, [userIdSignedIn])
-
   useEffect(() => {
     if (userIdSignedIn === null) {
       localStorage.removeItem('userIdSignedIn')

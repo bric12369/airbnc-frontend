@@ -26,7 +26,6 @@ function App() {
       localStorage.removeItem('userIdSignedIn')
     } else {
       localStorage.setItem('userIdSignedIn', userIdSignedIn)
-      console.log(userIdSignedIn)
       setIsLoading(true)
       fetchUserById(userIdSignedIn).then((response) => {
         setProfile(response.data.user)
@@ -47,7 +46,7 @@ function App() {
           <Route path='/' element={<HomePage properties={properties} setProperties={setProperties} />} />
           <Route path='/properties/:id' element={<PropertyDetailsPage profile={profile} />} />
           <Route path='/user/:id/favourites' element={<FavouritesPage />} />
-          <Route path='/user/:id/profile' element={<ProfilePage profile={profile} setProfile={setProfile} bookings={bookings} setBookings={setBookings} error={error} isLoading={isLoading} />} />
+          <Route path='/user/:id/profile' element={<ProfilePage profile={profile} setProfile={setProfile} bookings={bookings} setBookings={setBookings} error={error} isLoading={isLoading} properties={properties} />} />
         </Routes>
       </BrowserRouter>
     </UserContext>

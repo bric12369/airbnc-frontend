@@ -1,6 +1,7 @@
 import usePropertyDetails from "../hooks/usePropertyDetails"
 import useBooking from "../hooks/useBooking"
 import HostPropertyBookings from "./HostPropertyBookings";
+import HostPropertyReviews from "./HostPropertyReviews";
 
 const HostPropertyDetailsPage = () => {
 
@@ -21,6 +22,7 @@ const HostPropertyDetailsPage = () => {
                 </div>
                 <p>{property.description}</p>
                 <HostPropertyBookings />
+                <HostPropertyReviews />
             </div>
         )
     }

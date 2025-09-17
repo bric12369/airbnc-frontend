@@ -8,12 +8,15 @@ export default function useReviews() {
 
     const [reviews, setReviews] = useState({})
     const [reload, setReload] = useState(0)
+    const [reviewsLoading, setReviewsLoading] = useState(true)
 
     useEffect(() => {
+        setReviewsLoading(true)
         fetchPropertyReviews(id).then((response) => {
             setReviews(response.data)
+            setReviewsLoading(false)
         })
     }, [reload])
 
-    return { reviews, setReload }
+    return { reviews, setReload, reviewsLoading }
 }

@@ -21,7 +21,7 @@ const ReviewSnapshotCard = ({ review, profile, setReload }) => {
     }
 
     return (
-        <div id='reviewSnapshotContainer'>
+        <div className='reviewContainer'>
             <div className="flexContainer">
                 <img src={review.guest_avatar} alt={`Photo of ${review.guest}`} id="reviewerImg" />
                 <h3>{review.guest}</h3>

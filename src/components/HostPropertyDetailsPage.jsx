@@ -1,26 +1,12 @@
 import usePropertyDetails from "../hooks/usePropertyDetails"
 import useBooking from "../hooks/useBooking"
-import { useEffect, useState } from "react"
-import { fetchPropertyBookings } from "../utils/apiCalls"
-import { useParams } from "react-router"
-import { formatDateToDDMMYYYY } from "../utils/formatDates"
+import HostPropertyBookings from "./HostPropertyBookings";
 
 const HostPropertyDetailsPage = () => {
 
     const { property, isLoading } = usePropertyDetails()
-    const [bookingsLoading, setBookingsLoading] = useState(true)
-    const [bookings, setBookings] = useState([])
-    const { id } = useParams()
 
-    useEffect(() => {
-        setBookingsLoading(true)
-        fetchPropertyBookings(id).then((response) => {
-            setBookings(response.data.bookings)
-            setBookingsLoading(false)
-        })
-    }, [])
-
-    if (isLoading || !property.images || bookingsLoading) {
+    if (isLoading || !property.images) {
         return <div>Loading...</div>;
     } else {
         return (
@@ -34,16 +20,7 @@ const HostPropertyDetailsPage = () => {
                     })}
                 </div>
                 <p>{property.description}</p>
-                <h3>All Bookings:</h3>
-                {bookings.length > 0 ? (
-                    <div> 
-                        {bookings.map((booking) => {
-                        return <p key={booking.booking_id}>{`${formatDateToDDMMYYYY(booking.check_in_date.split('T')[0])} - ${formatDateToDDMMYYYY(booking.check_out_date.split('T')[0])}`}</p>
-                    })}
-                    </div>
-                ) :
-                    <p>No bookings yet</p>
-                }
+                <HostPropertyBookings />
             </div>
         )
     }

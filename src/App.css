@@ -168,3 +168,10 @@ h1 {
   text-align: left;
   border-radius: 4px;
 }
+
+.bookingsContainer {
+  max-height: 15rem;
+  overflow: auto;
+  border: 1px black solid;
+  border-radius: 1rem;
+}

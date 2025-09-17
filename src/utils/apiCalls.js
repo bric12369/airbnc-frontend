@@ -96,6 +96,12 @@ export function deleteReview(reviewId) {
     })
 }
 
+export function deleteBooking(bookingId) {
+    return apiClient.delete(`api/bookings/${bookingId}`).then((response) => {
+        return response
+    })
+}
+
 export function updateUserDetails(userId, profileInputs) {
     return apiClient.patch(`/api/users/${userId}`, profileInputs).then((response) => {
         return response

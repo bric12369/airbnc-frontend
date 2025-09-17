@@ -1,3 +1,4 @@
+import { Link } from "react-router"
 
 const HostPropertyList = ({ profile, properties }) => {
 
@@ -9,7 +10,9 @@ const HostPropertyList = ({ profile, properties }) => {
             {properties.map((property) => {
                 return property.host === fullName ? (
                     <div key={property.property_id}>
-                        <h4>{property.property_name}</h4> 
+                        <Link to={`/user/properties/${property.property_id}`}>
+                            <h4>{property.property_name}</h4> 
+                        </Link>
                         <p>{property.location}</p>
                     </div>
                 ): null

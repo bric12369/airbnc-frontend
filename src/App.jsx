@@ -10,6 +10,7 @@ import FavouritesPage from './components/FavouritesPage'
 import ProfilePage from './components/ProfilePage'
 import { fetchUserById } from './utils/apiCalls'
 import useProperties from './hooks/useProperties'
+import HostPropertyDetailsPage from './components/HostPropertyDetailsPage'
 
 function App() {
   const [properties, setProperties] = useState([])
@@ -49,6 +50,7 @@ function App() {
           <Route path='/properties/:id' element={<PropertyDetailsPage profile={profile} />} />
           <Route path='/user/:id/favourites' element={<FavouritesPage />} />
           <Route path='/user/:id/profile' element={<ProfilePage profile={profile} setProfile={setProfile} bookings={bookings} setBookings={setBookings} error={error} isLoading={isLoading} properties={properties} />} />
+          <Route path='/user/properties/:id' element={<HostPropertyDetailsPage />} />
         </Routes>
     </UserContext>
   )

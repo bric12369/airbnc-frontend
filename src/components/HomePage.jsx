@@ -5,7 +5,7 @@ import UserContext from "../Contexts/UserContext"
 import { useNavigate } from "react-router"
 
 
-const HomePage = ({ properties, setProperties }) => {
+const HomePage = ({ properties, propertiesLoading, setSearchParams }) => {
 
     const { userIdSignedIn } = useContext(UserContext)
     const navigate = useNavigate()
@@ -20,7 +20,7 @@ const HomePage = ({ properties, setProperties }) => {
 
     return (
         <div id='homePage'>
-            <PropertyList properties={properties} setProperties={setProperties} />
+            <PropertyList properties={properties} propertiesLoading={propertiesLoading} setSearchParams={setSearchParams} />
             <div id="fixedFooter">
                 <AnimatedButton text="View favourites" onClick={handleClick} />
             </div>

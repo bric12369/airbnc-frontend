@@ -4,15 +4,15 @@ import { useSearchParams } from 'react-router'
 
 export default function useProperties( setProperties ) {
     const [searchParams, setSearchParams] = useSearchParams()
-    const [isLoading, setIsLoading] = useState(false)
+    const [propertiesLoading, setPropertiesLoading] = useState(false)
 
     useEffect(() => {
-        setIsLoading(true)
+        setPropertiesLoading(true)
         fetchProperties(searchParams).then((response) => {
             setProperties(response.data.properties)
-            setIsLoading(false)
+            setPropertiesLoading(false)
         })
     }, [searchParams])
 
-    return { isLoading, setSearchParams }
+    return { propertiesLoading, setSearchParams }
 }

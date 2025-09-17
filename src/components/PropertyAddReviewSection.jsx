@@ -27,7 +27,7 @@ const PropertyAddReviewSection = ({ setShowReviewSection, setReload }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        if (userIdSignedIn === undefined) {
+        if (!userIdSignedIn) {
             alert('Please login to add a review')
         } else {
             postReview(id, reviewBody).then((response) => {

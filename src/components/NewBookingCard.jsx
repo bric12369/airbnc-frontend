@@ -9,7 +9,7 @@ const NewBookingCard = () => {
     const { bookedDates, handleChange, handleSubmitBooking, buttonDisabled } = useBooking()
 
     return (
-        <div className='flexContainer' id='calendarContainer'>
+        <div className="flexColumnContainer">
             <Calendar minDate={new Date()} selectRange={true} onChange={handleChange} tileDisabled={({date}) =>
                 bookedDates.some(bookedDate =>
                     bookedDate === date.toDateString()

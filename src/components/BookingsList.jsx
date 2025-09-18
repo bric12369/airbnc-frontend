@@ -26,12 +26,12 @@ const BookingsList = ({ bookings, setBookings }) => {
     }
 
     return(
-        <div>
+        <>
             <h3>Your Bookings:</h3>
             {bookings.map((booking) => {
                 return <BookingCard key={booking.booking_id} booking={booking} setRefetch={setRefetch} />
             })}
-        </div>
+        </>
     )
 }
 

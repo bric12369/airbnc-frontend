@@ -11,7 +11,7 @@ const HostPropertyReviews = () => {
         return <p>Guest reviews will appear here</p>
     } else {
         return (
-            <div>
+            <>
                 <h3>Reviews:</h3>
                 <p>{`Average rating: ${reviews.average_rating.toFixed(2)}`}</p>
                 {reviews.reviews.map((review) => {
@@ -28,7 +28,7 @@ const HostPropertyReviews = () => {
                     )
                 })
                 }
-            </div >
+            </>
         )
     }
 

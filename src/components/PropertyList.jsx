@@ -5,7 +5,7 @@ import ToolBar from './ToolBar'
 const PropertyList = ({ properties, propertiesLoading, setSearchParams }) => {
 
     return (
-        <div id='propertyList'>
+        <div className='flexColumnContainer'>
             <ToolBar setSearchParams={setSearchParams}/>
             {propertiesLoading && <p>Waking up the server...</p>}
             {properties.map((property) => {

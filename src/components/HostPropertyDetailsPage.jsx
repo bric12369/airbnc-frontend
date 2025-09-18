@@ -11,7 +11,7 @@ const HostPropertyDetailsPage = () => {
         return <div>Loading...</div>;
     } else {
         return (
-            <div>
+            <div className="flexColumnContainer">
                 <h3>Host Property Details Page</h3>
                 <h2>{property.property_name}</h2>
                 <p>{property.location}</p>

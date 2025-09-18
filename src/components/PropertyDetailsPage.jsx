@@ -31,7 +31,7 @@ const PropertyDetailsPage = ({ profile }) => {
         return <h3>Loading...</h3>
     } else {
         return (
-            <div>
+            <div className="flexColumnContainer">
                 <h2>{property.property_name}</h2>
                 <p>{property.location}</p>
                 <div className="imageContainer">

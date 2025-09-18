@@ -34,7 +34,7 @@ const ProfileDetails = ({ profile, setProfile }) => {
     }
 
     return (
-        < div >
+        <>
             <h3>Your details</h3>
             {toggle === 1 ?
                 <>
@@ -65,7 +65,7 @@ const ProfileDetails = ({ profile, setProfile }) => {
                     </div>
                 }
                 <AnimatedButton onClick={handleClick} text={toggle === 0 ? "Edit details" : "Cancel"} />
-        </div >
+        </>
     )
 }
 

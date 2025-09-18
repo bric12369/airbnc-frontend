@@ -35,7 +35,7 @@ const PropertyCard = ({ property, showFavouriteButton = false, showDeleteFavouri
             <Link to={`/properties/${property.property_id}`}>
                 <h3>{property.property_name}</h3>
             </Link>
-            <p>{`Located in ${property.location}`}</p>
+            <p>{property.location}</p>
             <Link to={`/properties/${property.property_id}`}>
                 <img className='propertyCardImage' src={property.image} alt={`Photo of ${property.property_name}`} />
             </Link>

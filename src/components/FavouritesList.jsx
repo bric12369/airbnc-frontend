@@ -20,7 +20,7 @@ const FavouritesList = () => {
     }, [newRequest])
 
     if (isLoading) {
-        return <Loading />
+        return <Loading msg="Loading" />
     } else {
         if (favourites.msg) {
             return <p>Add favourites to see them here.</p>

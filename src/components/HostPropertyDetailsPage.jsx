@@ -8,7 +8,7 @@ const HostPropertyDetailsPage = () => {
     const { property, isLoading } = usePropertyDetails()
 
     if (isLoading || !property.images) {
-        return <Loading />
+        return <Loading msg="Loading" />
     } else {
         return (
             <div className="flexColumnContainer">

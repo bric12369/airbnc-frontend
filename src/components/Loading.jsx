@@ -1,8 +1,11 @@
 
-const Loading = () => {
+const Loading = ({ msg }) => {
 
     return(
-        <p>Loading...</p>
+        <div id="spinnerContainer">
+            <div id="spinner"></div>
+            <p>{msg}</p>
+        </div>
     )
 
 }

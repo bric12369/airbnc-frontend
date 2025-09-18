@@ -10,7 +10,7 @@ const ProfilePage = ({ bookings, setBookings, profile, setProfile, error, isLoad
     } else {
 
         if (isLoading) {
-            return <Loading />
+            return <Loading msg="Loading" />
         } else {
             return (
                 <div className="flexColumnContainer">

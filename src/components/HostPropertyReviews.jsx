@@ -7,7 +7,7 @@ const HostPropertyReviews = () => {
     const { reviews, reviewsLoading } = useReviews()
 
     if (reviewsLoading) {
-        return <Loading />
+        return <Loading msg="Loading" />
     } else if (reviews.msg) {
         return <p>Guest reviews will appear here</p>
     } else {

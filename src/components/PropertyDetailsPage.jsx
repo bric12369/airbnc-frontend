@@ -29,7 +29,7 @@ const PropertyDetailsPage = ({ profile }) => {
     const stillLoading = isLoading || !property.images
 
     if (stillLoading) {
-        return <Loading />
+        return <Loading msg="Loading" />
     } else {
         return (
             <div className="flexColumnContainer">

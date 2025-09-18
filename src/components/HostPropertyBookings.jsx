@@ -20,7 +20,7 @@ const HostPropertyBookings = () => {
     }, [])
 
     if (bookingsLoading) {
-        return <Loading />
+        return <Loading msg="Loading" />
     } else {
         return (
             <>

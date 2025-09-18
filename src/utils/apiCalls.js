@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const apiClient = axios.create({
-    baseURL: 'https://airbnc-icdq.onrender.com'
+    baseURL: 'https://airbnc-1-9uw3.onrender.com/'
 })
 
 export function fetchProperties(filters) {

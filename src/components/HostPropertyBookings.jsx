@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { fetchPropertyBookings } from "../utils/apiCalls"
 import { useParams } from "react-router"
 import { formatDateToDDMMYYYY } from "../utils/formatDates"
+import Loading from "./Loading"
 
 
 const HostPropertyBookings = () => {
@@ -19,7 +20,7 @@ const HostPropertyBookings = () => {
     }, [])
 
     if (bookingsLoading) {
-        return <p>Loading...</p>
+        return <Loading />
     } else {
         return (
             <>

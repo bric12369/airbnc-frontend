@@ -7,6 +7,7 @@ import { useContext, useState } from "react"
 import { motion } from "motion/react"
 import AnimatedButton from "./AnimatedButton"
 import UserContext from "../Contexts/UserContext"
+import Loading from "./Loading"
 
 
 const PropertyDetailsPage = ({ profile }) => {
@@ -28,7 +29,7 @@ const PropertyDetailsPage = ({ profile }) => {
     const stillLoading = isLoading || !property.images
 
     if (stillLoading) {
-        return <h3>Loading...</h3>
+        return <Loading />
     } else {
         return (
             <div className="flexColumnContainer">

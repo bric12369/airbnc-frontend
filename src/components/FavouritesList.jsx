@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import UserContext from "../Contexts/UserContext"
 import { fetchUserFavourites } from "../utils/apiCalls"
 import PropertyCard from "./PropertyCard"
-import ToolBar from "./ToolBar"
+import Loading from "./Loading"
 
 const FavouritesList = () => {
 
@@ -20,7 +20,7 @@ const FavouritesList = () => {
     }, [newRequest])
 
     if (isLoading) {
-        return <p>Loading...</p>
+        return <Loading />
     } else {
         if (favourites.msg) {
             return <p>Add favourites to see them here.</p>

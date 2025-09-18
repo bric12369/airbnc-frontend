@@ -1,6 +1,7 @@
 import ProfileDetails from "./ProfileDetails"
 import BookingsList from "./BookingsList"
 import HostPropertyList from "./HostPropertyList"
+import Loading from "./Loading"
 
 const ProfilePage = ({ bookings, setBookings, profile, setProfile, error, isLoading, properties }) => {
 
@@ -9,7 +10,7 @@ const ProfilePage = ({ bookings, setBookings, profile, setProfile, error, isLoad
     } else {
 
         if (isLoading) {
-            return <p>Loading...</p>
+            return <Loading />
         } else {
             return (
                 <div className="flexColumnContainer">

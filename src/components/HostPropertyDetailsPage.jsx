@@ -1,14 +1,14 @@
 import usePropertyDetails from "../hooks/usePropertyDetails"
-import useBooking from "../hooks/useBooking"
 import HostPropertyBookings from "./HostPropertyBookings";
 import HostPropertyReviews from "./HostPropertyReviews";
+import Loading from "./Loading";
 
 const HostPropertyDetailsPage = () => {
 
     const { property, isLoading } = usePropertyDetails()
 
     if (isLoading || !property.images) {
-        return <div>Loading...</div>;
+        return <Loading />
     } else {
         return (
             <div className="flexColumnContainer">

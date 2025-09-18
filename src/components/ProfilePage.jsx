@@ -15,7 +15,7 @@ const ProfilePage = ({ bookings, setBookings, profile, setProfile, error, isLoad
                 <div className="flexColumnContainer">
                     <h2>{`Hello, ${profile.first_name}!`}</h2>
                     <ProfileDetails profile={profile} setProfile={setProfile} />
-                    <HostPropertyList profile={profile} properties={properties}/>
+                    { profile.is_host === true && <HostPropertyList profile={profile} properties={properties}/> }
                     <BookingsList bookings={bookings} setBookings={setBookings}/>
                 </div>
             )

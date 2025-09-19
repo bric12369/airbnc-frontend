@@ -1,23 +1,13 @@
 import { useContext, useEffect, useState } from "react"
 import UserContext from "../Contexts/UserContext"
-import { fetchUserFavourites } from "../utils/apiCalls"
 import PropertyCard from "./PropertyCard"
 import Loading from "./Loading"
+import useFavourites from "../hooks/useFavourites"
 
 const FavouritesList = () => {
 
-    const [favourites, setFavourites] = useState([])
     const { userIdSignedIn } = useContext(UserContext)
-    const [isLoading, setIsloading] = useState(true)
-    const [newRequest, setNewRequest] = useState(0)
-
-    useEffect(() => {
-        setIsloading(true)
-        fetchUserFavourites(userIdSignedIn).then((response) => {
-            response.data.favourites !== undefined ? setFavourites(response.data.favourites) : setFavourites(response.data)
-            setIsloading(false)
-        })
-    }, [newRequest])
+    const { favourites, isLoading, setNewRequest } = useFavourites(userIdSignedIn)
 
     if (isLoading) {
         return <Loading msg="Loading" />

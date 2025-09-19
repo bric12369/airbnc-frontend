@@ -115,6 +115,10 @@ h1 {
   height: 7rem;
 }
 
+.react-calendar {
+  margin-top: 1rem;
+}
+
 .imageContainer {
   width: 23rem;
   display: flex;

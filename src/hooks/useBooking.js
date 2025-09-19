@@ -46,11 +46,15 @@ export default function useBooking() {
     
         const handleSubmitBooking = (e) => {
             e.preventDefault()
-            postBooking(id, newBooking).then((response) => {
-                alert(response.data.msg)
-                setRetriggerFetch(retriggerFetch === 1 ? 0 : 1)
-                setButtonDisabled(true)
-            })
+            if (userIdSignedIn === null) {
+                alert('Please login to submit a booking')
+            } else {
+                postBooking(id, newBooking).then((response) => {
+                    alert(response.data.msg)
+                    setRetriggerFetch(retriggerFetch === 1 ? 0 : 1)
+                    setButtonDisabled(true)
+                })
+            }
         }
 
     return { bookedDates, handleChange, handleSubmitBooking, buttonDisabled }

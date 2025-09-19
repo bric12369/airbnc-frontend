@@ -1,13 +1,29 @@
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router'
 import { deleteFavourite, postFavourite } from '../utils/apiCalls'
 import UserContext from '../Contexts/UserContext'
 import AnimatedIcon from './AnimatedIcon'
+import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
 
 
-const PropertyCard = ({ property, showFavouriteButton = false, showDeleteFavouriteButton = false, setNewRequest }) => {
+const PropertyCard = ({ property, showFavouriteButton = false, showDeleteFavouriteButton = false, setNewRequest, favourites, isLoading }) => {
 
     const { userIdSignedIn } = useContext(UserContext)
+    
+    const [favourited, setFavourited] = useState(false)
+    
+    useEffect(() => {
+        if (userIdSignedIn) {
+            if ((favourites && favourites.hasOwnProperty('msg') || isLoading)) return
+            const existingFavourite = favourites?.some((fav) => {
+                return fav.property_id === property.property_id
+            })
+            setFavourited(existingFavourite)
+        } else {
+            setFavourited(false)
+        }
+    }, [favourites, property.property_id, userIdSignedIn, isLoading])
+
 
     const handleFavourite = (e) => {
         e.preventDefault()
@@ -15,7 +31,7 @@ const PropertyCard = ({ property, showFavouriteButton = false, showDeleteFavouri
             alert('Please sign in to favourite a property')
         } else {
             postFavourite(property.property_id, userIdSignedIn).then((response) => {
-                alert(response.data.msg)
+                setFavourited(true)
             })
         }
     }
@@ -25,7 +41,6 @@ const PropertyCard = ({ property, showFavouriteButton = false, showDeleteFavouri
         deleteFavourite(property.property_id, userIdSignedIn).then((response) => {
             if (response.status === 204) {
                 setNewRequest((curr) => curr === 0 ? 1 : 0)
-                alert('Favourite removed')
             }
         })
     }
@@ -40,7 +55,9 @@ const PropertyCard = ({ property, showFavouriteButton = false, showDeleteFavouri
                 <img className='propertyCardImage' src={property.image} alt={`Photo of ${property.property_name}`} />
             </Link>
             <p>{`£${property.price_per_night} per night`}</p>
-            {showFavouriteButton && <AnimatedIcon src='/love.png' onClick={handleFavourite} alt='Favourite button' />}
+            { showFavouriteButton && (favourited ? 
+            <AiFillHeart id='heartFilled' onClick={handleDeleteFavourite}/> : 
+            <AiOutlineHeart id='heartOutline' onClick={handleFavourite}/> )}
             {showDeleteFavouriteButton && <AnimatedIcon src='/delete.png' onClick={handleDeleteFavourite} alt='Delete favourite button' />}
         </div>
     )

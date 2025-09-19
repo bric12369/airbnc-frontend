@@ -216,3 +216,12 @@ h1 {
     transform: rotate(360deg);
   }
 }
+
+#heartFilled {
+  color: red;
+  font-size: 4rem;
+}
+
+#heartOutline {
+  font-size: 4rem;
+}

@@ -27,9 +27,10 @@ const PropertyCard = ({ property, showFavouriteButton = false, showDeleteFavouri
 
     const handleFavourite = (e) => {
         e.preventDefault()
-        if (userIdSignedIn === undefined) {
+        if (userIdSignedIn === undefined || userIdSignedIn === null) {
             alert('Please sign in to favourite a property')
         } else {
+            console.log(userIdSignedIn)
             postFavourite(property.property_id, userIdSignedIn).then((response) => {
                 setFavourited(true)
             })

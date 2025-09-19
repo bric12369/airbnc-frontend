@@ -19,7 +19,7 @@ const PropertyDetailsPage = ({ profile }) => {
 
     const handleClick = (e) => {
         e.preventDefault()
-        if (userIdSignedIn === undefined) {
+        if (userIdSignedIn === undefined || userIdSignedIn === null) {
             alert('Please login to add a review')
         } else {
             setShowReviewSection(true)

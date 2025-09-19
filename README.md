@@ -1,12 +1,30 @@
-# React + Vite
+# AirBnC
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+AirBnC is the front-end of a full-stack property booking application. It connects to a custom-built **AirBnC API** to provide a full user experience including browsing listings, managing favourites, submitting bookings and writing reviews.
 
-Currently, two official plugins are available:
+💻 Live Site: [https://air-bnc-br.netlify.app/](https://air-bnc-br.netlify.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠️ Tech Stack
 
-## Expanding the ESLint configuration
+* React
+* JavaScript
+* HTML & CSS
+* AirBnC API (custom backend)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ✨ Features
+* Login from a list of pre-defined users
+* Browse from a list of available properties and apply filters
+* Add or remove properties from your favourites and view your favourites list.
+* Visit a details page for a given property
+* Submit or delete reviews for properties
+* Submit bookings for properties
+* Manage your details and bookings on the Profile Page
+* If you are a host, view your listed properties and their associated bookings and reviews
+
+## 🚀 Getting Started
+
+To run this project locally:
+```
+npm install
+npm run dev
+```

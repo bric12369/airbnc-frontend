@@ -33,6 +33,7 @@ const ToolBar = ({ setSearchParams }) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         setSearchParams(formInputs)
+        setIsOpen(false)
     }
 
     const handleResetFilters = (e) => {
@@ -40,11 +41,14 @@ const ToolBar = ({ setSearchParams }) => {
         document.getElementById('filtersForm').reset()
         setFormInputs({})
         setSearchParams({})
+        setIsOpen(false)
     }
 
     const handleOpenFilters = () => {
         setIsOpen((prev) => !prev)
     }
+
+    const formEmpty = !Object.values(formInputs).some(value => value.trim() !== "")
 
     return (
         <>
@@ -52,29 +56,29 @@ const ToolBar = ({ setSearchParams }) => {
             {isOpen &&
                     <form onSubmit={handleSubmit} id='filtersForm' className="Card3D">
                         <label>Sort by:
-                            <select name="sort" onChange={handleSelect} className="filter" >
+                            <select name="sort" onChange={handleSelect} className="filter" value={formInputs.sort || ''} >
                                 <option value="" defaultValue>Recommended</option>
                                 <option value="price_per_night">Price high to low</option>
                                 <option value="price_per_night">Price low to high</option>
                             </select>
                         </label>
                         <label>Property type:
-                            <select name="property_type" onChange={handleSelect} defaultValue='' className="filter" >
-                                <option value='' disabled>Select an option</option>
+                            <select name="property_type" onChange={handleSelect} className="filter" value={formInputs.property_type || ''} >
+                                <option value='' defaultValue disabled>Select an option</option>
                                 {propertyTypes.map((type) => {
                                     return <option key={type} value={type}>{type}</option>
                                 })}
                             </select>
                         </label>
                         <label>Max price:
-                            <input type="number" min='50' name='max_price' onChange={handleSelect} className="filter" />
+                            <input type="number" min='50' name='max_price' onChange={handleSelect} className="filter" value={formInputs.max_price || ''} />
                         </label>
                         <label>Min price:
-                            <input type="number" name='min_price' onChange={handleSelect} className="filter" />
+                            <input type="number" name='min_price' onChange={handleSelect} className="filter" value={formInputs.min_price || ''} />
                         </label>
                         <div id='formButtons'>
-                            <AnimatedButton text='Submit' />
-                            <AnimatedButton text='Reset Filters' type='reset' onClick={handleResetFilters} />
+                            <AnimatedButton text='Submit' disabled={formEmpty} />
+                            <AnimatedButton text='Reset Filters' type='reset' onClick={handleResetFilters} disabled={formEmpty} />
                         </div>
                     </form>}
         </>

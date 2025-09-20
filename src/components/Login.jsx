@@ -2,6 +2,7 @@ import { useContext, useState } from "react"
 import UserContext from "../Contexts/UserContext"
 import AnimatedButton from "./AnimatedButton"
 import { useNavigate } from "react-router"
+import { toast } from "react-toastify"
 
 const Login = ({ users, setProfilePicClicked }) => {
 
@@ -18,15 +19,15 @@ const Login = ({ users, setProfilePicClicked }) => {
         e.preventDefault()
         setUserIdSignedIn(userId)
         setProfilePicClicked(false)
-        alert('Login successful')
+        toast.success('Login successful')
     }
 
     const handleLogout = (e) => {
         e.preventDefault()
         setUserIdSignedIn(null)
         setProfilePicClicked(false)
-        alert('Log out successful')
         navigate('/')
+        toast.success('Log out successful')
     }
 
     const handleViewProfile = (e) => {

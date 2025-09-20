@@ -1,3 +1,4 @@
+import { toast } from "react-toastify"
 import { deleteReview } from "../utils/apiCalls"
 import { formatDateToDDMMYYYY } from "../utils/formatDates"
 import AnimatedIcon from "./AnimatedIcon"
@@ -15,7 +16,7 @@ const ReviewSnapshotCard = ({ review, profile, setReload }) => {
                 setReload((prev) => {
                     return prev === 0 ? 1 : 0
                 })
-                alert('Review deleted successfully')
+                toast.success('Review deleted successfully')
             }
         })
     }

@@ -1,3 +1,4 @@
+import { toast } from "react-toastify"
 import UserContext from "../Contexts/UserContext"
 import { updateUserDetails } from "../utils/apiCalls"
 import AnimatedButton from "./AnimatedButton"
@@ -28,7 +29,7 @@ const ProfileDetails = ({ profile, setProfile }) => {
         e.preventDefault()
         updateUserDetails(userIdSignedIn, profileInputs).then((response) => {
             setProfile(response.data.user)
-            alert('Update successful')
+            toast.success('Update successful')
             setToggle(toggle === 0 ? 1 : 0)
         })
     }

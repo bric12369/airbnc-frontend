@@ -3,6 +3,7 @@ import AnimatedButton from "./AnimatedButton"
 import PropertyList from "./PropertyList"
 import UserContext from "../Contexts/UserContext"
 import { useNavigate } from "react-router"
+import { toast } from "react-toastify"
 
 
 const HomePage = ({ properties, propertiesLoading, setSearchParams }) => {
@@ -12,7 +13,7 @@ const HomePage = ({ properties, propertiesLoading, setSearchParams }) => {
 
     const handleClick = (e) => {
         if (userIdSignedIn === null || userIdSignedIn === undefined) {
-            alert('Please sign in to view your favourites')
+            toast.warning('Please sign in to view your favourites')
         } else {
             navigate(`/user/${userIdSignedIn}/favourites`, { replace: true })
         }

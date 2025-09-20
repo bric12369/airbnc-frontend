@@ -4,10 +4,10 @@ import ReviewSnapshotCard from "./ReviewSnapshotCard"
 import useReviews from "../hooks/useReviews"
 import PropertyAddReviewSection from "./PropertyAddReviewSection"
 import { useContext, useState } from "react"
-import { motion } from "motion/react"
 import AnimatedButton from "./AnimatedButton"
 import UserContext from "../Contexts/UserContext"
 import Loading from "./Loading"
+import { toast } from "react-toastify"
 
 
 const PropertyDetailsPage = ({ profile }) => {
@@ -20,7 +20,7 @@ const PropertyDetailsPage = ({ profile }) => {
     const handleClick = (e) => {
         e.preventDefault()
         if (userIdSignedIn === undefined || userIdSignedIn === null) {
-            alert('Please login to add a review')
+            toast.warning('Please login to add a review')
         } else {
             setShowReviewSection(true)
         }

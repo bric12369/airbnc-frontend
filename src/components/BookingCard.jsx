@@ -1,3 +1,4 @@
+import { toast } from "react-toastify"
 import { deleteBooking } from "../utils/apiCalls"
 import { formatDateToDDMMYYYY } from "../utils/formatDates"
 import AnimatedIcon from "./AnimatedIcon"
@@ -9,7 +10,7 @@ const BookingCard = ({ booking, setRefetch }) => {
         deleteBooking(booking.booking_id).then((response) => {
             if (response.status === 204) {
                 setRefetch((prev) => prev === 0 ? 1 : 0)
-                alert('Booking deleted successfully')
+                toast.success('Booking deleted successfully')
             }
         })
     }

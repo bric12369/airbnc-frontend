@@ -3,6 +3,7 @@ import { postReview } from "../utils/apiCalls"
 import { useParams } from "react-router"
 import AnimatedButton from "./AnimatedButton"
 import UserContext from "../Contexts/UserContext"
+import { toast } from "react-toastify"
 
 const PropertyAddReviewSection = ({ setShowReviewSection, setReload }) => {
 
@@ -28,10 +29,10 @@ const PropertyAddReviewSection = ({ setShowReviewSection, setReload }) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         if (!userIdSignedIn) {
-            alert('Please login to add a review')
+            toast.warning('Please login to add a review')
         } else {
             postReview(id, reviewBody).then((response) => {
-                response.status === 201 ? alert('Review posted') : null
+                response.status === 201 ? toast.success('Review posted') : null
                 setReload((prev) => {
                     return prev === 0 ? 1 : 0
                 })

@@ -4,6 +4,7 @@ import { deleteFavourite, postFavourite } from '../utils/apiCalls'
 import UserContext from '../Contexts/UserContext'
 import AnimatedIcon from './AnimatedIcon'
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
+import { toast } from 'react-toastify'
 
 
 const PropertyCard = ({ property, showFavouriteButton = false, showDeleteFavouriteButton = false, setNewRequest, favourites, isLoading }) => {
@@ -28,7 +29,7 @@ const PropertyCard = ({ property, showFavouriteButton = false, showDeleteFavouri
     const handleFavourite = (e) => {
         e.preventDefault()
         if (userIdSignedIn === undefined || userIdSignedIn === null) {
-            alert('Please sign in to favourite a property')
+            toast.warning('Please sign in to favourite a property')
         } else {
             console.log(userIdSignedIn)
             postFavourite(property.property_id, userIdSignedIn).then((response) => {

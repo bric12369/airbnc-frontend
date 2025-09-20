@@ -3,6 +3,7 @@ import { useParams } from 'react-router';
 import { fetchPropertyBookings, postBooking } from '../utils/apiCalls';
 import UserContext from '../Contexts/UserContext';
 import { formatDate, getDateRange } from '../utils/formatDates';
+import { toast } from 'react-toastify';
 
 
 export default function useBooking() {
@@ -48,14 +49,14 @@ export default function useBooking() {
         const handleSubmitBooking = (e) => {
             e.preventDefault()
             if (userIdSignedIn === null) {
-                alert('Please login to submit a booking')
+                toast.warning('Please login to submit a booking')
             } else {
                 postBooking(id, newBooking).then((response) => {
-                    alert(response.data.msg)
+                    toast.success(response.data.msg)
                     setRetriggerFetch(retriggerFetch === 1 ? 0 : 1)
                     setButtonDisabled(true)
                 }).catch((error) => {
-                    alert(`${error.response.data.msg}. Please select alternative dates.`)
+                    toast.error(`${error.response.data.msg}. Please select alternative dates.`)
                     setError(error.response.data.msg)
                 })
             }

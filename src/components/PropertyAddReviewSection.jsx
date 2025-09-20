@@ -41,8 +41,9 @@ const PropertyAddReviewSection = ({ setShowReviewSection, setReload }) => {
     }
 
     return (
+        <>
         <form onSubmit={handleSubmit} id='reviewForm'>
-            <input type="text" name="comment" placeholder='Leave a review...' onChange={handleInput} />
+            <div className="rowContainer">
             <label>Rating:
                 <select name="rating" defaultValue="" onChange={handleInput}>
                     <option value="" disabled>0</option>
@@ -53,9 +54,15 @@ const PropertyAddReviewSection = ({ setShowReviewSection, setReload }) => {
                     <option value="5">5</option>
                 </select>
             </label>
-            <AnimatedButton text='Submit review' />
-            <AnimatedButton text='Cancel' onClick={handleCancel}/>
+            <input type="text" name="comment" placeholder='Leave a review...' onChange={handleInput} />
+            </div>
+            <div className="rowContainer">
+                <AnimatedButton text='Submit review' />
+                <AnimatedButton text='Cancel' onClick={handleCancel} />
+            </div>
         </form>
+        
+        </>
     )
 }
 

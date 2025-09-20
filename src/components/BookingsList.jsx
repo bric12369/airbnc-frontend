@@ -28,9 +28,11 @@ const BookingsList = ({ bookings, setBookings }) => {
     return(
         <>
             <h3>Your Bookings:</h3>
-            {bookings.map((booking) => {
-                return <BookingCard key={booking.booking_id} booking={booking} setRefetch={setRefetch} />
-            })}
+            <div className="flexContainer" id="bookingsListContainer">
+                {bookings.map((booking) => {
+                    return <BookingCard key={booking.booking_id} booking={booking} setRefetch={setRefetch} />
+                })}
+            </div>
         </>
     )
 }

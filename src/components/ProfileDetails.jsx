@@ -36,7 +36,7 @@ const ProfileDetails = ({ profile, setProfile }) => {
 
     return (
         <>
-            <h3>Your details</h3>
+            <h3>Your details:</h3>
             {toggle === 1 ?
                 <>
 

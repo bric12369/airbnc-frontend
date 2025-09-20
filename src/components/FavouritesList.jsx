@@ -16,12 +16,14 @@ const FavouritesList = () => {
             return <p>Add favourites to see them here.</p>
         } else {
             return (
-                <div className="flexContainer">
-                    <h3>Your favourites</h3>
+                <>
+                    <h2>Your favourites:</h2>
+                <div className="flexContainer" id="favouritesListContainer">
                     {favourites.map((favourite) => {
                         return <PropertyCard key={(favourite.favourite_id)} property={favourite} showDeleteFavouriteButton={true} setNewRequest={setNewRequest} />
                     })}
                 </div>
+                </>
             )
         }
     }

@@ -60,7 +60,7 @@ const PropertyCard = ({ property, showFavouriteButton = false, showDeleteFavouri
             { showFavouriteButton && (favourited ? 
             <AiFillHeart id='heartFilled' onClick={handleDeleteFavourite}/> : 
             <AiOutlineHeart id='heartOutline' onClick={handleFavourite}/> )}
-            {showDeleteFavouriteButton && <AnimatedIcon src='/delete.png' onClick={handleDeleteFavourite} alt='Delete favourite button' />}
+            {showDeleteFavouriteButton && <AnimatedIcon src='/delete.png' onClick={handleDeleteFavourite} alt='Delete favourite button' id='deleteBtn' />}
         </div>
     )
 }

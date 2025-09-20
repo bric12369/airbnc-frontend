@@ -1,6 +1,6 @@
 import { motion } from 'motion/react'
 
-const AnimatedIcon = ({ src, alt, onClick }) => {
+const AnimatedIcon = ({ src, alt, onClick, id }) => {
 
     return(
         <motion.img src={src} 
@@ -10,7 +10,8 @@ const AnimatedIcon = ({ src, alt, onClick }) => {
         whileTap={{ scale: 0.8 }} 
         style={{ cursor: 'pointer' }}
         transition={{ type: "spring", stiffness: 200 }}
-        className='icon'/>
+        className='icon'
+        id={id}/>
     )
 }
 

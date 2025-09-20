@@ -16,7 +16,7 @@ const PropertyList = ({ properties, propertiesLoading, setSearchParams }) => {
         <div className='flexContainer' id='toolBarContainer'>
             <ToolBar setSearchParams={setSearchParams}/>
         </div>
-        <div className='flexContainer'>
+        <div className='flexContainer' id='propertyListContainer'>
             {(propertiesLoading || isLoading) && <Loading msg="Loading..." />}
             {properties.map((property) => {
                 return <PropertyCard property={property} key={property.property_id} showFavouriteButton={true} favourites={!error ? favourites : undefined} setNewRequest={setNewRequest} isLoading={isLoading} />

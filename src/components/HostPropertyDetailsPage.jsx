@@ -12,7 +12,6 @@ const HostPropertyDetailsPage = () => {
     } else {
         return (
             <div className="flexContainer">
-                <h3>Host Property Details Page</h3>
                 <h2>{property.property_name}</h2>
                 <p>{property.location}</p>
                 <div className="imageContainer">

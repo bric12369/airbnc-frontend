@@ -18,7 +18,7 @@ const HostPropertyReviews = () => {
                 {reviews.reviews.map((review) => {
                     return (
                         <div key={review.review_id} className="reviewContainer">
-                            <div className="flexContainer">
+                            <div className="rowContainer">
                                 <img src={review.guest_avatar} alt={`Photo of ${review.guest}`} id="reviewerImg" />
                                 <h3>{review.guest}</h3>
                             </div>

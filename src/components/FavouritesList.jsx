@@ -16,7 +16,7 @@ const FavouritesList = () => {
             return <p>Add favourites to see them here.</p>
         } else {
             return (
-                <div className="flexColumnContainer">
+                <div className="flexContainer">
                     <h3>Your favourites</h3>
                     {favourites.map((favourite) => {
                         return <PropertyCard key={(favourite.favourite_id)} property={favourite} showDeleteFavouriteButton={true} setNewRequest={setNewRequest} />

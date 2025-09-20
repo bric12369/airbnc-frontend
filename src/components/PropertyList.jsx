@@ -12,13 +12,17 @@ const PropertyList = ({ properties, propertiesLoading, setSearchParams }) => {
     const { favourites, isLoading, setNewRequest, error } = useFavourites(userIdSignedIn)
 
     return (
-        <div className='flexColumnContainer'>
+        <>
+        <div className='flexContainer' id='toolBarContainer'>
             <ToolBar setSearchParams={setSearchParams}/>
+        </div>
+        <div className='flexContainer'>
             {(propertiesLoading || isLoading) && <Loading msg="Loading..." />}
             {properties.map((property) => {
                 return <PropertyCard property={property} key={property.property_id} showFavouriteButton={true} favourites={!error ? favourites : undefined} setNewRequest={setNewRequest} isLoading={isLoading} />
             })}
         </div>
+        </>
     )
 }
 

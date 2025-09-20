@@ -27,7 +27,7 @@ const HostPropertyBookings = () => {
                 <h3>All Bookings:</h3>
                 {
                     bookings.length > 0 ? (
-                        <div className="flexColumnContainer" id="bookingsContainer">
+                        <div className="flexContainer" id="bookingsContainer">
                             {bookings.map((booking) => {
                                 return <p key={booking.booking_id}>{`${formatDateToDDMMYYYY(booking.check_in_date.split('T')[0])} - ${formatDateToDDMMYYYY(booking.check_out_date.split('T')[0])}`}</p>
                             })}

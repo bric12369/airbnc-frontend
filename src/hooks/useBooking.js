@@ -11,6 +11,7 @@ export default function useBooking() {
         const [currBookings, setCurrBookings] = useState([])
         const [buttonDisabled, setButtonDisabled] = useState(true)
         const [retriggerFetch, setRetriggerFetch] = useState(1)
+        const [error, setError] = useState('')
     
         const { id } = useParams()
     
@@ -53,9 +54,12 @@ export default function useBooking() {
                     alert(response.data.msg)
                     setRetriggerFetch(retriggerFetch === 1 ? 0 : 1)
                     setButtonDisabled(true)
+                }).catch((error) => {
+                    alert(`${error.response.data.msg}. Please select alternative dates.`)
+                    setError(error.response.data.msg)
                 })
             }
         }
 
-    return { bookedDates, handleChange, handleSubmitBooking, buttonDisabled }
+    return { bookedDates, handleChange, handleSubmitBooking, buttonDisabled, error }
 }

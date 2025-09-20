@@ -10,6 +10,7 @@ const PropertyAddReviewSection = ({ setShowReviewSection, setReload }) => {
     const [reviewBody, setReviewBody] = useState({})
     const { id } = useParams()
     const { userIdSignedIn } = useContext(UserContext)
+    const noReviewBody = (!reviewBody.rating || !reviewBody.comment)
 
     const handleCancel = (e) => {
         e.preventDefault()
@@ -57,7 +58,7 @@ const PropertyAddReviewSection = ({ setShowReviewSection, setReload }) => {
             <input type="text" name="comment" placeholder='Leave a review...' onChange={handleInput} />
             </div>
             <div className="rowContainer">
-                <AnimatedButton text='Submit review' />
+                <AnimatedButton text='Submit review' disabled={noReviewBody} />
                 <AnimatedButton text='Cancel' onClick={handleCancel} />
             </div>
         </form>

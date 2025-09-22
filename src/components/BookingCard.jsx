@@ -17,11 +17,11 @@ const BookingCard = ({ booking, setRefetch }) => {
 
     return(
         <div className="Card3D">
-            <h3>{booking.property_name}</h3>
+            <h3 className="propertyTitle">{booking.property_name}</h3>
             <img className="propertyCardImage" src={booking.image} alt={`Image of ${booking.property_name}`} />
             <p>{`Check in: ${formatDateToDDMMYYYY(booking.check_in_date)}`}</p>
             <p>{`Check out: ${formatDateToDDMMYYYY(booking.check_out_date)}`}</p>
-            <AnimatedIcon src='/delete.png' onClick={handleDeleteBooking} />
+            <AnimatedIcon src='/delete.png' onClick={handleDeleteBooking} id='deleteBookingBtn' />
         </div>
     )
 }

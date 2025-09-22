@@ -50,7 +50,7 @@ const PropertyCard = ({ property, showFavouriteButton = false, showDeleteFavouri
     return (
         <div className='Card3D'>
             <Link to={`/properties/${property.property_id}`}>
-                <h3>{property.property_name}</h3>
+                <h3 className='propertyTitle'>{property.property_name}</h3>
             </Link>
             <p>{property.location}</p>
             <Link to={`/properties/${property.property_id}`}>

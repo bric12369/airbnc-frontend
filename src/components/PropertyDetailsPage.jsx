@@ -46,7 +46,7 @@ const PropertyDetailsPage = ({ profile }) => {
                 <NewBookingCard />
                 {Array.isArray(reviews.reviews) && reviews.reviews.length > 0 ? (
                     <>
-                        <h3 className="subheading">Reviews:</h3>
+                        <h3>Reviews:</h3>
                         <p>{`Average rating: ${reviews.average_rating.toFixed(2)}`}</p>
                         {reviews.reviews.map((review) => {
                             return <ReviewSnapshotCard key={review.review_id} review={review} profile={profile} setReload={setReload} />

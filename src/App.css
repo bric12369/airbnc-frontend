@@ -100,7 +100,7 @@ h2 {
 }
 
 #profileViewBox {
-  width: 60%;
+  width: 80%;
 }
 
 .button {
@@ -344,6 +344,10 @@ select {
 
   #bookingsContainer {
     width: 50%;
+  }
+
+  #profileViewBox {
+    width: 60%;
   }
 }
 

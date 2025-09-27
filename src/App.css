@@ -113,8 +113,13 @@ h2 {
   background-color: #E9D8C4;
 }
 
-#scrollLeft, #scrollRight {
+#scrollLeft,
+#scrollRight {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 50%;
+  font-weight: 700;
   height: 2rem;
   width: 2rem;
 }
@@ -297,7 +302,8 @@ select {
     margin: 0 1.25rem;
   }
 
-  #deleteBtn, #deleteBookingBtn {
+  #deleteBtn,
+  #deleteBookingBtn {
     height: 2.5rem;
   }
 
@@ -322,7 +328,7 @@ select {
   }
 
   .imageContainer {
-    width: 80%;
+    width: 70%;
   }
 
   #hostImage {
@@ -356,12 +362,18 @@ select {
   #profileViewBox {
     width: 60%;
   }
+
+  #scrollLeft,
+  #scrollRight {
+    height: 2.7rem;
+    width: 2.7rem;
+  }
 }
 
 @media only screen and (min-width: 1024px) {
 
   h1 {
-    font-size: 7rem;
+    font-size: 9rem;
   }
 
   h2 {
@@ -376,7 +388,10 @@ select {
     font-size: 1.3rem;
   }
 
-  p, label, input, select {
+  p,
+  label,
+  input,
+  select {
     font-size: 1.3rem;
   }
 
@@ -385,7 +400,7 @@ select {
   }
 
   .icon {
-    height: 6rem;
+    height: 7rem;
     margin: 0 1.75rem;
   }
 
@@ -401,12 +416,19 @@ select {
     width: 15rem;
   }
 
-  #deleteBtn, #deleteBookingBtn {
+  #deleteBtn,
+  #deleteBookingBtn {
     height: 3rem;
   }
 
   #profileViewBox {
     width: 45%;
     padding: 1rem 2rem;
+  }
+
+  #scrollLeft,
+  #scrollRight {
+    height: 4rem;
+    width: 4rem;
   }
 }

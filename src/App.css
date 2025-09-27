@@ -113,6 +113,12 @@ h2 {
   background-color: #E9D8C4;
 }
 
+#scrollLeft, #scrollRight {
+  border-radius: 50%;
+  height: 2rem;
+  width: 2rem;
+}
+
 .Card3D:hover {
   background-color: #cebdab;
 }
@@ -133,6 +139,7 @@ h2 {
   overflow: scroll;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
+  gap: 2px;
 }
 
 .propertyImage {

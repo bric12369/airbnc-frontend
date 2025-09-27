@@ -3,7 +3,7 @@ import usePropertyDetails from "../hooks/usePropertyDetails"
 import ReviewSnapshotCard from "./ReviewSnapshotCard"
 import useReviews from "../hooks/useReviews"
 import PropertyAddReviewSection from "./PropertyAddReviewSection"
-import { useContext, useState } from "react"
+import { useContext, useRef, useState } from "react"
 import AnimatedButton from "./AnimatedButton"
 import UserContext from "../Contexts/UserContext"
 import Loading from "./Loading"
@@ -16,6 +16,7 @@ const PropertyDetailsPage = ({ profile }) => {
     const { reviews, setReload } = useReviews()
     const [showReviewSection, setShowReviewSection] = useState(false)
     const { userIdSignedIn } = useContext(UserContext)
+    const imageContainerRef = useRef(null)
 
     const handleClick = (e) => {
         e.preventDefault()
@@ -24,6 +25,10 @@ const PropertyDetailsPage = ({ profile }) => {
         } else {
             setShowReviewSection(true)
         }
+    }
+
+    const handleScroll = (num) => {
+        imageContainerRef.current?.scrollBy({left: num})
     }
 
     const stillLoading = isLoading || !property.images
@@ -35,10 +40,14 @@ const PropertyDetailsPage = ({ profile }) => {
             <div className="flexContainer">
                 <h2>{property.property_name}</h2>
                 <p>{property.location}</p>
-                <div className="imageContainer">
+                <div className="imageContainer" ref={imageContainerRef}>
                     {property.images.map((image, index) => {
                         return <img key={image} className="propertyImage" src={image} alt={`${property.property_name} image ${index + 1}`} />
                     })}
+                </div>
+                <div className="rowContainer">
+                    <AnimatedButton text="<" onClick={() => handleScroll(-1)} id="scrollLeft"/>
+                    <AnimatedButton text=">" onClick={() => handleScroll(1)} id="scrollRight"/>
                 </div>
                 <p>{property.description}</p>
                 <img src={property.host_avatar} alt={`Photo of host: ${property.host}`} id='hostImage' />

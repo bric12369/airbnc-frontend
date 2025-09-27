@@ -19,6 +19,7 @@ const HostPropertyListings = () => {
                 setError(response.data.msg)
                 return
             }
+            setError('')
             setProperties(response.data.properties)
         }).catch((error) => {
             setError(error.response.data.msg)

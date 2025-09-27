@@ -129,8 +129,8 @@ h2 {
 }
 
 .propertyCardImage {
-  height: 10rem;
-  height: auto;
+  height: 11rem;
+  width: auto;
 }
 
 .react-calendar {
@@ -448,6 +448,6 @@ select {
   }
 
   #hostImageFigcaption {
-  width: 20%;
-}
+    width: 20%;
+  }
 }

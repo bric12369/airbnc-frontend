@@ -8,6 +8,7 @@ import AnimatedButton from "./AnimatedButton"
 import UserContext from "../Contexts/UserContext"
 import Loading from "./Loading"
 import { toast } from "react-toastify"
+import { Link } from "react-router"
 
 
 const PropertyDetailsPage = ({ profile }) => {
@@ -28,7 +29,7 @@ const PropertyDetailsPage = ({ profile }) => {
     }
 
     const handleScroll = (num) => {
-        imageContainerRef.current?.scrollBy({left: num})
+        imageContainerRef.current?.scrollBy({ left: num })
     }
 
     const stillLoading = isLoading || !property.images
@@ -46,12 +47,16 @@ const PropertyDetailsPage = ({ profile }) => {
                     })}
                 </div>
                 <div className="rowContainer">
-                    <AnimatedButton text="<" onClick={() => handleScroll(-1)} id="scrollLeft"/>
-                    <AnimatedButton text=">" onClick={() => handleScroll(1)} id="scrollRight"/>
+                    <AnimatedButton text="<" onClick={() => handleScroll(-1)} id="scrollLeft" />
+                    <AnimatedButton text=">" onClick={() => handleScroll(1)} id="scrollRight" />
                 </div>
                 <p>{property.description}</p>
-                <img src={property.host_avatar} alt={`Photo of host: ${property.host}`} id='hostImage' />
-                <figcaption>{`Host: ${property.host}`}</figcaption>
+                    <Link to={`/properties/host/${property.host_id}`}>
+                        <img src={property.host_avatar} alt={`Photo of host: ${property.host}`} id='hostImage' />
+                    </Link>
+                    <Link to={`/properties/host/${property.host_id}`} id="hostImageFigcaptionLink">
+                        <figcaption id="hostImageFigcaption">Like this property? Click here to check out what else host {property.host} has to offer.</figcaption>
+                    </Link>
                 <NewBookingCard />
                 {Array.isArray(reviews.reviews) && reviews.reviews.length > 0 ? (
                     <>

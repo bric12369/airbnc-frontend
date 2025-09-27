@@ -30,7 +30,7 @@ const ReviewSnapshotCard = ({ review, profile, setReload }) => {
             <p>{`Rating: ${review.rating}`}</p>
             <p>{review.comment}</p>
             <p>{formatDateToDDMMYYYY(review.created_at.split('T')[0])}</p>
-            {authorMatch && <AnimatedIcon src='/delete.png' alt='Delete review' onClick={handleDelete}/>}
+            {authorMatch && <AnimatedIcon src='/delete.png' alt='Delete review' onClick={handleDelete} id='deleteReviewBtn'/>}
         </div>
     )
 }

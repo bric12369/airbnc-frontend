@@ -313,7 +313,8 @@ select {
   }
 
   #deleteBtn,
-  #deleteBookingBtn {
+  #deleteBookingBtn,
+  #deleteReviewBtn {
     height: 2.5rem;
   }
 
@@ -324,6 +325,7 @@ select {
 
   .propertyCardImage {
     width: 85%;
+    height: auto;
   }
 
   #filtersForm {
@@ -432,7 +434,8 @@ select {
   }
 
   #deleteBtn,
-  #deleteBookingBtn {
+  #deleteBookingBtn,
+  #deleteReviewBtn {
     height: 3rem;
   }
 

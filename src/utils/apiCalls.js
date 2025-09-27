@@ -5,11 +5,15 @@ const apiClient = axios.create({
 })
 
 export function fetchProperties(filters) {
-    return apiClient.get('/api/properties', {
-        params: filters
-    }).then((response) => {
-        return response
-    })
+    try {
+        return apiClient.get('/api/properties', {
+            params: filters
+        }).then((response) => {
+            return response
+        })
+    } catch(error) {
+        return error
+    }
 }
 
 export function fetchPropertyById(id) {

@@ -5,7 +5,7 @@ import PropertyCard from './PropertyCard'
 import ToolBar from './ToolBar'
 import UserContext from '../Contexts/UserContext'
 
-const PropertyList = ({ properties, propertiesLoading, setSearchParams }) => {
+const PropertyList = ({ properties, propertiesLoading, setSearchParams, propertiesError }) => {
 
     const { userIdSignedIn } = useContext(UserContext)
 
@@ -18,9 +18,11 @@ const PropertyList = ({ properties, propertiesLoading, setSearchParams }) => {
         </div>
         <div className='flexContainer' id='propertyListContainer'>
             {(propertiesLoading || isLoading) && <Loading msg="Loading..." />}
-            {properties.map((property) => {
+            {propertiesError ? <p>{propertiesError}</p> : 
+            properties.map((property) => {
                 return <PropertyCard property={property} key={property.property_id} showFavouriteButton={true} favourites={!error ? favourites : undefined} setNewRequest={setNewRequest} isLoading={isLoading} />
-            })}
+            })
+            }
         </div>
         </>
     )

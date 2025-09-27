@@ -24,7 +24,7 @@ function App() {
     return localStorage.getItem('userIdSignedIn')
   })
 
-  const { propertiesLoading, setSearchParams } = useProperties(setProperties)
+  const { propertiesLoading, setSearchParams, error: propertiesError } = useProperties(setProperties)
 
   useEffect(() => {
     if (userIdSignedIn === null) {
@@ -47,7 +47,7 @@ function App() {
     <UserContext value={{ userIdSignedIn, setUserIdSignedIn }}>
         <Header users={users} />
         <Routes>
-          <Route path='/' element={<HomePage properties={properties} setSearchParams={setSearchParams} propertiesLoading={propertiesLoading} />} />
+          <Route path='/' element={<HomePage properties={properties} setSearchParams={setSearchParams} propertiesLoading={propertiesLoading} propertiesError={propertiesError} />} />
           <Route path='/properties/:id' element={<PropertyDetailsPage profile={profile} />} />
           <Route path='/user/:id/favourites' element={<FavouritesPage />} />
           <Route path='/user/:id/profile' element={<ProfilePage profile={profile} setProfile={setProfile} bookings={bookings} setBookings={setBookings} error={error} isLoading={isLoading} properties={properties} />} />

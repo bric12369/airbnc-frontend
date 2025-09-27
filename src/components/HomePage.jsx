@@ -6,7 +6,7 @@ import { useNavigate } from "react-router"
 import { toast } from "react-toastify"
 
 
-const HomePage = ({ properties, propertiesLoading, setSearchParams }) => {
+const HomePage = ({ properties, propertiesLoading, setSearchParams, propertiesError }) => {
 
     const { userIdSignedIn } = useContext(UserContext)
     const navigate = useNavigate()
@@ -21,7 +21,7 @@ const HomePage = ({ properties, propertiesLoading, setSearchParams }) => {
 
     return (
         <div id='homePage'>
-            <PropertyList properties={properties} propertiesLoading={propertiesLoading} setSearchParams={setSearchParams} />
+            <PropertyList properties={properties} propertiesLoading={propertiesLoading} setSearchParams={setSearchParams} propertiesError={propertiesError} />
             <div id="fixedFooter">
                 <AnimatedButton text="View favourites" onClick={handleClick} />
             </div>

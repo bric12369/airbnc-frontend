@@ -130,6 +130,7 @@ h2 {
 
 .propertyCardImage {
   height: 10rem;
+  height: auto;
 }
 
 .react-calendar {
@@ -322,7 +323,8 @@ select {
 
   #propertyListContainer,
   #favouritesListContainer,
-  #bookingsListContainer {
+  #bookingsListContainer,
+  #hostListingsContainer {
     flex-direction: row;
     flex-wrap: wrap;
   }
